@@ -58,7 +58,10 @@ public abstract class Cliente {
     public void setTelFixo(String telFixo) {
         this.telFixo = telFixo;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return this.getNome(); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

@@ -5,6 +5,12 @@
  */
 package com.principal;
 
+import com.sun.security.ntlm.Client;
+import javax.swing.JOptionPane;
+import problema2.Cliente;
+import problema2.ClientePessoaFisica;
+import problema2.ClientePessoaJuridica;
+
 /**
  *
  * @author daniel
@@ -27,21 +33,230 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        bg_tipoPessoa = new javax.swing.ButtonGroup();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        lb_nome = new javax.swing.JLabel();
+        tf_nome = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        tf_telFixo = new javax.swing.JFormattedTextField();
+        jLabel3 = new javax.swing.JLabel();
+        tf_telCelular = new javax.swing.JFormattedTextField();
+        rb_CPF = new javax.swing.JRadioButton();
+        rb_CNPJ = new javax.swing.JRadioButton();
+        lb_cpf_cnpj = new javax.swing.JLabel();
+        fft_cpf_cnpj = new javax.swing.JFormattedTextField();
+        bt_cadastrar = new javax.swing.JButton();
+        fft_servidor = new javax.swing.JFormattedTextField();
+        lb_servidor = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        cb_clientes = new javax.swing.JComboBox<>();
+        jPanel2 = new javax.swing.JPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        lb_nome.setText("Nome");
+
+        jLabel2.setText("Telefone Fixo");
+
+        try {
+            tf_telFixo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) ####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        jLabel3.setText("Telefone Celular");
+
+        try {
+            tf_telCelular.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        bg_tipoPessoa.add(rb_CPF);
+        rb_CPF.setSelected(true);
+        rb_CPF.setText("Pessoa Fisica");
+        rb_CPF.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rb_CPFMouseClicked(evt);
+            }
+        });
+
+        bg_tipoPessoa.add(rb_CNPJ);
+        rb_CNPJ.setText("Pessoa Juridica");
+        rb_CNPJ.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rb_CNPJMouseClicked(evt);
+            }
+        });
+
+        lb_cpf_cnpj.setText("CPF");
+
+        try {
+            fft_cpf_cnpj.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        bt_cadastrar.setText("Cadastrar");
+        bt_cadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_cadastrarActionPerformed(evt);
+            }
+        });
+
+        fft_servidor.setEditable(false);
+        try {
+            fft_servidor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###.###")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        fft_servidor.setToolTipText("");
+
+        lb_servidor.setText("Servidor JMS");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lb_servidor)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(lb_cpf_cnpj)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addGap(85, 85, 85)
+                            .addComponent(jLabel3))
+                        .addComponent(lb_nome)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(tf_telFixo, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(tf_telCelular, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(rb_CPF)
+                            .addGap(81, 81, 81)
+                            .addComponent(rb_CNPJ))
+                        .addComponent(tf_nome)
+                        .addComponent(fft_cpf_cnpj)
+                        .addComponent(bt_cadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(fft_servidor)))
+                .addContainerGap(44, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(lb_nome)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tf_nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rb_CPF)
+                    .addComponent(rb_CNPJ))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lb_cpf_cnpj)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fft_cpf_cnpj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tf_telFixo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_telCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lb_servidor)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(fft_servidor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(bt_cadastrar)
+                .addGap(38, 38, 38))
+        );
+
+        jTabbedPane1.addTab("Cliente", jPanel1);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(cb_clientes, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(252, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(cb_clientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(358, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Conta Corrente", jPanel3);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 423, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 401, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Acompanhamento", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void rb_CPFMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rb_CPFMouseClicked
+        // TODO add your handling code here:
+        try {
+            fft_cpf_cnpj.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        lb_cpf_cnpj.setText("CPF");
+        fft_servidor.setEditable(false);
+    }//GEN-LAST:event_rb_CPFMouseClicked
+
+    private void rb_CNPJMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rb_CNPJMouseClicked
+        // TODO add your handling code here:
+        try {
+            fft_cpf_cnpj.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###/####-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        lb_cpf_cnpj.setText("CNPJ");
+        fft_servidor.setEditable(true);
+    }//GEN-LAST:event_rb_CNPJMouseClicked
+
+    private void bt_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cadastrarActionPerformed
+        // TODO add your handling code here:
+        Cliente c;
+        if (rb_CPF.isSelected()) {
+            c = new ClientePessoaFisica(tf_nome.getText(), tf_telCelular.getText(), tf_telFixo.getText(), fft_cpf_cnpj.getText());
+        } else {
+            c = new ClientePessoaJuridica(tf_nome.getText(), tf_telCelular.getText(), tf_telFixo.getText(), fft_cpf_cnpj.getText(), fft_servidor.getText());
+        }
+        cb_clientes.addItem(c);
+        JOptionPane.showMessageDialog(this, "Cliente cadastrado com sucesso!");
+    }//GEN-LAST:event_bt_cadastrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +294,24 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup bg_tipoPessoa;
+    private javax.swing.JButton bt_cadastrar;
+    private javax.swing.JComboBox<Cliente> cb_clientes;
+    private javax.swing.JFormattedTextField fft_cpf_cnpj;
+    private javax.swing.JFormattedTextField fft_servidor;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel lb_cpf_cnpj;
+    private javax.swing.JLabel lb_nome;
+    private javax.swing.JLabel lb_servidor;
+    private javax.swing.JRadioButton rb_CNPJ;
+    private javax.swing.JRadioButton rb_CPF;
+    private javax.swing.JTextField tf_nome;
+    private javax.swing.JFormattedTextField tf_telCelular;
+    private javax.swing.JFormattedTextField tf_telFixo;
     // End of variables declaration//GEN-END:variables
 }
