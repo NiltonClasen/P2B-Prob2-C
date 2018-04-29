@@ -19,7 +19,7 @@ import problema2.ContaCorrente;
  * @author daniel
  */
 public class Principal extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form Principal
      */
@@ -257,7 +257,7 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel1.setText("Conta Corrente");
 
-        jLabel4.setText("Operacao");
+        jLabel4.setText("Tipo operação");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
