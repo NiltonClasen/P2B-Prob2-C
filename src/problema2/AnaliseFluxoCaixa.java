@@ -11,13 +11,13 @@ package problema2;
  */
 public class AnaliseFluxoCaixa {
     
-    public String toString(ContaCorrente conta){
-        String str = "";
-        for(Operacao o : conta.getOperacoes()){
-            str += o.toString()+"\n";
-        }
-        return str;
-    }
+//    public String toString(ContaCorrente conta){
+//        String str = "";
+//        for(Operacao o : conta.getOperacoes()){
+//            str += o.toString()+"\n";
+//        }
+//        return str;
+//    }
     
     
 }
