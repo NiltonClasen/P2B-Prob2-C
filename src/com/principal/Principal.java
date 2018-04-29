@@ -51,6 +51,14 @@ public class Principal extends javax.swing.JFrame {
         lb_servidor = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         cb_clientes = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        tf_numero = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        tf_agencia = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        tf_saldo = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -178,21 +186,56 @@ public class Principal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Cliente", jPanel1);
 
+        jLabel1.setText("Numero");
+
+        jLabel4.setText("Cliente");
+
+        jLabel5.setText("Agencia");
+
+        jLabel6.setText("Saldo");
+
+        jButton1.setText("Cadastrar Conta");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(cb_clientes, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(252, Short.MAX_VALUE))
+                .addGap(52, 52, 52)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel4)
+                    .addComponent(cb_clientes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tf_numero)
+                    .addComponent(tf_agencia)
+                    .addComponent(tf_saldo)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addGap(39, 39, 39)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tf_numero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tf_agencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cb_clientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(358, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tf_saldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addComponent(jButton1)
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Conta Corrente", jPanel3);
@@ -299,8 +342,13 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JComboBox<Cliente> cb_clientes;
     private javax.swing.JFormattedTextField fft_cpf_cnpj;
     private javax.swing.JFormattedTextField fft_servidor;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -310,7 +358,10 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel lb_servidor;
     private javax.swing.JRadioButton rb_CNPJ;
     private javax.swing.JRadioButton rb_CPF;
+    private javax.swing.JTextField tf_agencia;
     private javax.swing.JTextField tf_nome;
+    private javax.swing.JTextField tf_numero;
+    private javax.swing.JTextField tf_saldo;
     private javax.swing.JFormattedTextField tf_telCelular;
     private javax.swing.JFormattedTextField tf_telFixo;
     // End of variables declaration//GEN-END:variables
