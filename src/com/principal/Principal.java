@@ -5,9 +5,10 @@
  */
 package com.principal;
 
-import com.sun.security.ntlm.Client;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.util.ArrayList;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import problema2.Cliente;
 import problema2.ClientePessoaFisica;
@@ -19,14 +20,14 @@ import problema2.ContaCorrente;
  * @author daniel
  */
 public class Principal extends javax.swing.JFrame {
-    
+
     /**
      * Creates new form Principal
      */
     public Principal() {
         initComponents();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
     }
 
     /**
@@ -39,6 +40,12 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         bg_tipoPessoa = new javax.swing.ButtonGroup();
+        jdNotifica = new javax.swing.JDialog();
+        jLabel5 = new javax.swing.JLabel();
+        cbSms = new javax.swing.JCheckBox();
+        cbWhats = new javax.swing.JCheckBox();
+        cbJMS = new javax.swing.JCheckBox();
+        btEnviarNotifica = new javax.swing.JButton();
         tp_fastBank = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         lb_nome = new javax.swing.JLabel();
@@ -66,6 +73,72 @@ public class Principal extends javax.swing.JFrame {
         cb_contas = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        cbNotificacao = new javax.swing.JCheckBox();
+        btAnalise = new javax.swing.JCheckBox();
+        btBaixa = new javax.swing.JCheckBox();
+        btCadastrarServicos = new javax.swing.JButton();
+
+        jdNotifica.setAlwaysOnTop(true);
+        jdNotifica.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jdNotifica.setLocation(new java.awt.Point(5, 5));
+        jdNotifica.setSize(new java.awt.Dimension(392, 381));
+        jdNotifica.setType(java.awt.Window.Type.POPUP);
+        jdNotifica.addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                jdNotificaWindowOpened(evt);
+            }
+        });
+
+        jLabel5.setText("Escolha o tipo de notificação");
+
+        cbSms.setText("SMS");
+
+        cbWhats.setText("WhatsApp");
+
+        cbJMS.setText("JMS");
+
+        btEnviarNotifica.setText("Enviar");
+        btEnviarNotifica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEnviarNotificaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jdNotificaLayout = new javax.swing.GroupLayout(jdNotifica.getContentPane());
+        jdNotifica.getContentPane().setLayout(jdNotificaLayout);
+        jdNotificaLayout.setHorizontalGroup(
+            jdNotificaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jdNotificaLayout.createSequentialGroup()
+                .addGroup(jdNotificaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jdNotificaLayout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addGroup(jdNotificaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbJMS)
+                            .addComponent(cbWhats)
+                            .addComponent(cbSms)))
+                    .addGroup(jdNotificaLayout.createSequentialGroup()
+                        .addGap(112, 112, 112)
+                        .addComponent(btEnviarNotifica)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jdNotificaLayout.createSequentialGroup()
+                .addGap(0, 73, Short.MAX_VALUE)
+                .addComponent(jLabel5)
+                .addGap(67, 67, 67))
+        );
+        jdNotificaLayout.setVerticalGroup(
+            jdNotificaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jdNotificaLayout.createSequentialGroup()
+                .addComponent(jLabel5)
+                .addGap(30, 30, 30)
+                .addComponent(cbSms)
+                .addGap(18, 18, 18)
+                .addComponent(cbWhats)
+                .addGap(18, 18, 18)
+                .addComponent(cbJMS)
+                .addGap(18, 18, 18)
+                .addComponent(btEnviarNotifica)
+                .addContainerGap(50, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -156,7 +229,7 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(ftt_cpf_cnpj)
                         .addComponent(bt_cadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(ftt_servidor)))
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -231,7 +304,7 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(ftt_numero)
                     .addComponent(ftt_agencia)
                     .addComponent(bt_cadastrarConta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -250,14 +323,32 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(cb_clientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(bt_cadastrarConta)
-                .addContainerGap(129, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tp_fastBank.addTab("Conta Corrente", jPanel3);
 
         jLabel1.setText("Conta Corrente");
 
-        jLabel4.setText("Tipo operação");
+        jLabel4.setText("Tipo de Serviços");
+
+        cbNotificacao.setText("Notificação das operações realizadas");
+        cbNotificacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbNotificacaoActionPerformed(evt);
+            }
+        });
+
+        btAnalise.setText("Análise do fluxo de caixa");
+
+        btBaixa.setText("Baixa automática de investimento");
+
+        btCadastrarServicos.setText("Cadastrar");
+        btCadastrarServicos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCadastrarServicosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -266,10 +357,15 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(53, 53, 53)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btAnalise)
+                    .addComponent(cbNotificacao)
                     .addComponent(jLabel4)
                     .addComponent(jLabel1)
-                    .addComponent(cb_contas, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(57, Short.MAX_VALUE))
+                    .addComponent(cb_contas, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btCadastrarServicos)
+                        .addComponent(btBaixa)))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -280,8 +376,18 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(cb_contas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
-                .addContainerGap(275, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(cbNotificacao)
+                .addGap(18, 18, 18)
+                .addComponent(btAnalise)
+                .addGap(18, 18, 18)
+                .addComponent(btBaixa)
+                .addGap(39, 39, 39)
+                .addComponent(btCadastrarServicos)
+                .addContainerGap(52, Short.MAX_VALUE))
         );
+
+        cbNotificacao.getAccessibleContext().setAccessibleName("");
 
         tp_fastBank.addTab("Acompanhamento", jPanel2);
 
@@ -336,14 +442,41 @@ public class Principal extends javax.swing.JFrame {
     private void bt_cadastrarContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cadastrarContaActionPerformed
         // TODO add your handling code here:
         ContaCorrente cc;
-        cc = new ContaCorrente(Integer.parseInt(ftt_numero.getText()),Integer.parseInt(ftt_agencia.getText()));
-        
+        cc = new ContaCorrente(Integer.parseInt(ftt_numero.getText()), Integer.parseInt(ftt_agencia.getText()));
+
         Cliente c = (Cliente) cb_clientes.getSelectedItem();
         c.addConta(cc);
-        
+
         cb_contas.addItem(cc);
         JOptionPane.showMessageDialog(this, "Conta corrente cadastrada com sucesso!");
     }//GEN-LAST:event_bt_cadastrarContaActionPerformed
+
+    private void cbNotificacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbNotificacaoActionPerformed
+        // TODO add your handling code here:
+        ContaCorrente cc = (ContaCorrente) cb_contas.getSelectedItem();
+        if (cbNotificacao.isSelected()) {
+            jdNotifica.setVisible(rootPaneCheckingEnabled);
+        }
+    }//GEN-LAST:event_cbNotificacaoActionPerformed
+
+    private void jdNotificaWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_jdNotificaWindowOpened
+        // TODO add your handling code here:
+        //ao abrir a tela, centralizá-la no meio da tela
+        jdNotifica.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jdNotificaWindowOpened
+
+    private void btEnviarNotificaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEnviarNotificaActionPerformed
+        // TODO add your handling code here:
+        if (!cbJMS.isSelected() && !cbSms.isSelected() && !cbWhats.isSelected()) {
+              JOptionPane.showMessageDialog(btEnviarNotifica, "Favor, informar ao menos uma notificação!");
+        }else{
+        jdNotifica.dispose();
+        }
+    }//GEN-LAST:event_btEnviarNotificaActionPerformed
+
+    private void btCadastrarServicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarServicosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btCadastrarServicosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -382,8 +515,16 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bg_tipoPessoa;
+    private javax.swing.JCheckBox btAnalise;
+    private javax.swing.JCheckBox btBaixa;
+    private javax.swing.JButton btCadastrarServicos;
+    private javax.swing.JButton btEnviarNotifica;
     private javax.swing.JButton bt_cadastrar;
     private javax.swing.JButton bt_cadastrarConta;
+    private javax.swing.JCheckBox cbJMS;
+    private javax.swing.JCheckBox cbNotificacao;
+    private javax.swing.JCheckBox cbSms;
+    private javax.swing.JCheckBox cbWhats;
     private javax.swing.JComboBox<Cliente> cb_clientes;
     private javax.swing.JComboBox<ContaCorrente> cb_contas;
     private javax.swing.JFormattedTextField fft_telCelular;
@@ -396,9 +537,11 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JDialog jdNotifica;
     private javax.swing.JLabel lb_agencia;
     private javax.swing.JLabel lb_cliente;
     private javax.swing.JLabel lb_cpf_cnpj;

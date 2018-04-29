@@ -18,7 +18,8 @@ public class ContaCorrente {
     private int agencia;
     private Cliente cliente;
     private double saldo = 0;
-    private List<Operacao> operacoes = new ArrayList();
+    private ArrayList<Operacao> operacoes = new ArrayList();
+
 
     public ContaCorrente(int numero, int agencia) {
         this.setNumero(numero);
@@ -57,8 +58,10 @@ public class ContaCorrente {
     private void receberTransferencia(double valor, ContaCorrente origem){    
         Operacao oper = new OperacaoTransferencia(valor,this.getSaldo(),TipoOperacao.ENTRADA,new Date(),this,origem);
         operacoes.add(oper);
-        this.saldo += valor;        
+        this.saldo += valor;  
     }
+    
+   
     
     public int getNumero() {
         return numero;
@@ -92,4 +95,13 @@ public class ContaCorrente {
     public String toString(){
         return this.getChave();
     }
+
+    public List<Operacao> getOperacoes() {
+        return operacoes;
+    }
+    public void setOperacoes(ArrayList<Operacao> operacoes){
+        this.operacoes = operacoes;
+    }
+    
+  
 }
