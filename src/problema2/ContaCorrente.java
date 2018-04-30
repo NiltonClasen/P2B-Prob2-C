@@ -19,6 +19,7 @@ public class ContaCorrente {
     private Cliente cliente;
     private double saldo = 0;
     private ArrayList<Operacao> operacoes = new ArrayList();
+    private List<Servico> servicos = new ArrayList();
 
 
     public ContaCorrente(int numero, int agencia) {
@@ -101,6 +102,19 @@ public class ContaCorrente {
     }
     public void setOperacoes(ArrayList<Operacao> operacoes){
         this.operacoes = operacoes;
+    }
+    
+    public void addServico(Servico servico) {
+        servicos.add(servico);
+    }
+
+    public void executarServicos() {
+
+        if (!servicos.isEmpty()) {
+            for (Servico servico : servicos) {
+                System.err.println(servico.toString());
+            }
+        }
     }
     
   

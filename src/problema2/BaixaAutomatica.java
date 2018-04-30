@@ -9,11 +9,17 @@ package problema2;
  *
  * @author casa
  */
-public class BaixaAutomatica {
+public class BaixaAutomatica extends Servico{
+    
 
-    public String toString(ContaCorrente conta) {
+    public BaixaAutomatica(ContaCorrente conta) {
+        super(conta);
+    }
 
-        return "Conta " + conta.getChave() + ": Operação de Baixa automatica. ";
+    @Override
+    public String toString() {
+        
+        return "Conta " + this.getConta().getChave() + ": Operação de Baixa automatica. ";
 
     }
 

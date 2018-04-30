@@ -5,19 +5,28 @@
  */
 package problema2;
 
+import java.util.Date;
+
 /**
  *
  * @author casa
  */
-public class AnaliseFluxoCaixa {
-    
-//    public String toString(ContaCorrente conta){
-//        String str = "";
-//        for(Operacao o : conta.getOperacoes()){
-//            str += o.toString()+"\n";
-//        }
-//        return str;
-//    }
-    
-    
+public class AnaliseFluxoCaixa extends Servico {
+
+    public AnaliseFluxoCaixa(ContaCorrente conta) {
+        super(conta);
+    }
+
+    @Override
+    public String toString() {
+        
+        String str = "Análise de fluxo de caixa: ";
+        
+        if(!this.getConta().getOperacoes().isEmpty())
+            for (Operacao o : this.getConta().getOperacoes()) {
+                str += o.toString() + "\n";
+            }
+        return str;
+    }
+
 }

@@ -7,8 +7,8 @@ package problema2;
 
 /**
  *
- * @author casa
+ * @author bruno
  */
-public class Servicos {
-    
+public enum TipoNotificacao{
+   SMS, WHATSAPP,JMS;  
 }
