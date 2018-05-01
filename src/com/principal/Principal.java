@@ -341,6 +341,12 @@ public class Principal extends javax.swing.JFrame {
 
         tp_fastBank.addTab("Conta Corrente", p_contaCorrente);
 
+        cb_contas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_contasActionPerformed(evt);
+            }
+        });
+
         lb_ContaCorrente.setText("Conta Corrente");
 
         lb_tipoServicos.setText("Tipo de Serviços");
@@ -596,13 +602,27 @@ public class Principal extends javax.swing.JFrame {
         else if (cb_operacao.getSelectedIndex() == 2) {
             lb_contaDO.setText("Conta Destino");
             cb_contasDO.setEnabled(true);
+            //evita fazer transferencia pra si msm
+            cb_contasDO.removeItem(cb_contas.getSelectedItem());
         }
         //recebimento de transferencia
         else if (cb_operacao.getSelectedIndex() == 3) {
             lb_contaDO.setText("Conta Origem");
             cb_contasDO.setEnabled(true);
+            //evita fazer transferencia pra si msm
+            cb_contasDO.removeItem(cb_contas.getSelectedItem());
         }
     }//GEN-LAST:event_cb_operacaoActionPerformed
+
+    private void cb_contasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_contasActionPerformed
+        // TODO add your handling code here:
+        cb_contasDO.removeAllItems();
+        for (int i = 0; i < cb_contas.getItemCount(); i++) {
+           cb_contasDO.addItem(cb_contas.getItemAt(i));
+        }
+        //evita fazer transferencia pra si msm
+        cb_contasDO.removeItem(cb_contas.getSelectedItem());
+    }//GEN-LAST:event_cb_contasActionPerformed
 
     /**
      * @param args the command line arguments
