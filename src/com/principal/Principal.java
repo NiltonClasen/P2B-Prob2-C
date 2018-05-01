@@ -572,6 +572,16 @@ public class Principal extends javax.swing.JFrame {
             }
         }
         if (c.getCliente() instanceof ClientePessoaJuridica) {
+            if (cb_whatsapp.isSelected()) {
+                Notificacao n  = new Notificacao(c, TipoNotificacao.WHATSAPP);
+                c.addServico(n);
+                System.out.println(n.toString());
+            }
+            if (cb_sms.isSelected()) {
+                Notificacao n  = new Notificacao(c, TipoNotificacao.SMS);
+                c.addServico(n);
+                System.out.println(n.toString());
+            }
             if (cb_jms.isSelected()) {
                 Notificacao n  = new Notificacao(c, TipoNotificacao.JMS);
                 c.addServico(n);
@@ -616,12 +626,22 @@ public class Principal extends javax.swing.JFrame {
 
     private void cb_contasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_contasActionPerformed
         // TODO add your handling code here:
+        
+        //evita fazer transferencia pra si msm
         cb_contasDO.removeAllItems();
         for (int i = 0; i < cb_contas.getItemCount(); i++) {
            cb_contasDO.addItem(cb_contas.getItemAt(i));
         }
-        //evita fazer transferencia pra si msm
         cb_contasDO.removeItem(cb_contas.getSelectedItem());
+        
+        //nao mostrar jms pra pessoa fisica
+        ContaCorrente c = (ContaCorrente) cb_contas.getSelectedItem();
+        if (c.getCliente() instanceof ClientePessoaFisica) {
+            cb_jms.setVisible(false);
+        }
+        if (c.getCliente() instanceof ClientePessoaJuridica) {
+            cb_jms.setVisible(true);
+        }
     }//GEN-LAST:event_cb_contasActionPerformed
 
     /**
