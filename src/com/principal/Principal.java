@@ -14,6 +14,8 @@ import problema2.Cliente;
 import problema2.ClientePessoaFisica;
 import problema2.ClientePessoaJuridica;
 import problema2.ContaCorrente;
+import problema2.Notificacao;
+import problema2.TipoNotificacao;
 
 /**
  *
@@ -47,7 +49,7 @@ public class Principal extends javax.swing.JFrame {
         cbJMS = new javax.swing.JCheckBox();
         btEnviarNotifica = new javax.swing.JButton();
         tp_fastBank = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
+        p_cliente = new javax.swing.JPanel();
         lb_nome = new javax.swing.JLabel();
         tf_nome = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -61,7 +63,7 @@ public class Principal extends javax.swing.JFrame {
         bt_cadastrar = new javax.swing.JButton();
         ftt_servidor = new javax.swing.JFormattedTextField();
         lb_servidor = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        p_contaCorrente = new javax.swing.JPanel();
         cb_clientes = new javax.swing.JComboBox<>();
         lb_numero = new javax.swing.JLabel();
         lb_cliente = new javax.swing.JLabel();
@@ -69,14 +71,23 @@ public class Principal extends javax.swing.JFrame {
         bt_cadastrarConta = new javax.swing.JButton();
         ftt_numero = new javax.swing.JFormattedTextField();
         ftt_agencia = new javax.swing.JFormattedTextField();
-        jPanel2 = new javax.swing.JPanel();
+        p_acompanhamento = new javax.swing.JPanel();
         cb_contas = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        cbNotificacao = new javax.swing.JCheckBox();
-        btAnalise = new javax.swing.JCheckBox();
-        btBaixa = new javax.swing.JCheckBox();
-        btCadastrarServicos = new javax.swing.JButton();
+        lb_ContaCorrente = new javax.swing.JLabel();
+        lb_tipoServicos = new javax.swing.JLabel();
+        cb_whatsapp = new javax.swing.JCheckBox();
+        cb_Analise = new javax.swing.JCheckBox();
+        cb_Baixa = new javax.swing.JCheckBox();
+        bt_CadastrarServicos = new javax.swing.JButton();
+        lb_valor = new javax.swing.JLabel();
+        ftt_valor = new javax.swing.JFormattedTextField();
+        cb_operacao = new javax.swing.JComboBox<>();
+        lb_operacao = new javax.swing.JLabel();
+        lb_contaDO = new javax.swing.JLabel();
+        cb_contasDO = new javax.swing.JComboBox<>();
+        lb_notificacao = new javax.swing.JLabel();
+        cb_jms = new javax.swing.JCheckBox();
+        cb_sms = new javax.swing.JCheckBox();
 
         jdNotifica.setAlwaysOnTop(true);
         jdNotifica.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -202,44 +213,44 @@ public class Principal extends javax.swing.JFrame {
 
         lb_servidor.setText("Servidor JMS");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout p_clienteLayout = new javax.swing.GroupLayout(p_cliente);
+        p_cliente.setLayout(p_clienteLayout);
+        p_clienteLayout.setHorizontalGroup(
+            p_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, p_clienteLayout.createSequentialGroup()
+                .addContainerGap(31, Short.MAX_VALUE)
+                .addGroup(p_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lb_servidor)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(p_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(lb_cpf_cnpj)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(p_clienteLayout.createSequentialGroup()
                             .addComponent(jLabel2)
                             .addGap(85, 85, 85)
                             .addComponent(jLabel3))
                         .addComponent(lb_nome)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(p_clienteLayout.createSequentialGroup()
                             .addComponent(ftt_telFixo, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(fft_telCelular, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(p_clienteLayout.createSequentialGroup()
                             .addComponent(rb_CPF)
                             .addGap(81, 81, 81)
                             .addComponent(rb_CNPJ))
+                        .addComponent(ftt_servidor)
                         .addComponent(tf_nome)
                         .addComponent(ftt_cpf_cnpj)
-                        .addComponent(bt_cadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ftt_servidor)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(bt_cadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(25, 25, 25))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+        p_clienteLayout.setVerticalGroup(
+            p_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(p_clienteLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
                 .addComponent(lb_nome)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(tf_nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(p_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rb_CPF)
                     .addComponent(rb_CNPJ))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -247,23 +258,23 @@ public class Principal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ftt_cpf_cnpj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(p_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(p_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ftt_telFixo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fft_telCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lb_servidor)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ftt_servidor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(bt_cadastrar)
-                .addGap(38, 38, 38))
+                .addContainerGap(126, Short.MAX_VALUE))
         );
 
-        tp_fastBank.addTab("Cliente", jPanel1);
+        tp_fastBank.addTab("Cliente", p_cliente);
 
         lb_numero.setText("Numero");
 
@@ -290,106 +301,156 @@ public class Principal extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+        javax.swing.GroupLayout p_contaCorrenteLayout = new javax.swing.GroupLayout(p_contaCorrente);
+        p_contaCorrente.setLayout(p_contaCorrenteLayout);
+        p_contaCorrenteLayout.setHorizontalGroup(
+            p_contaCorrenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(p_contaCorrenteLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(p_contaCorrenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lb_agencia)
                     .addComponent(lb_numero)
                     .addComponent(lb_cliente)
-                    .addComponent(cb_clientes, 0, 313, Short.MAX_VALUE)
+                    .addComponent(cb_clientes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ftt_numero)
                     .addComponent(ftt_agencia)
-                    .addComponent(bt_cadastrarConta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(bt_cadastrarConta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+        p_contaCorrenteLayout.setVerticalGroup(
+            p_contaCorrenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(p_contaCorrenteLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
                 .addComponent(lb_numero)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ftt_numero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
+                .addGap(4, 4, 4)
                 .addComponent(lb_agencia)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ftt_agencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lb_cliente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cb_clientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(bt_cadastrarConta)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(259, Short.MAX_VALUE))
         );
 
-        tp_fastBank.addTab("Conta Corrente", jPanel3);
+        tp_fastBank.addTab("Conta Corrente", p_contaCorrente);
 
-        jLabel1.setText("Conta Corrente");
+        lb_ContaCorrente.setText("Conta Corrente");
 
-        jLabel4.setText("Tipo de Serviços");
+        lb_tipoServicos.setText("Tipo de Serviços");
 
-        cbNotificacao.setText("Notificação das operações realizadas");
-        cbNotificacao.addActionListener(new java.awt.event.ActionListener() {
+        cb_whatsapp.setText("WhatsApp");
+
+        cb_Analise.setText("Análise do fluxo de caixa");
+
+        cb_Baixa.setText("Baixa automática de investimento");
+
+        bt_CadastrarServicos.setText("Confirmar");
+        bt_CadastrarServicos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbNotificacaoActionPerformed(evt);
+                bt_CadastrarServicosActionPerformed(evt);
             }
         });
 
-        btAnalise.setText("Análise do fluxo de caixa");
+        lb_valor.setText("Valor");
 
-        btBaixa.setText("Baixa automática de investimento");
+        ftt_valor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
 
-        btCadastrarServicos.setText("Cadastrar");
-        btCadastrarServicos.addActionListener(new java.awt.event.ActionListener() {
+        cb_operacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Saque", "Deposito", "Transferência", "Recebimento de transferência" }));
+        cb_operacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btCadastrarServicosActionPerformed(evt);
+                cb_operacaoActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btAnalise)
-                    .addComponent(cbNotificacao)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel1)
-                    .addComponent(cb_contas, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btCadastrarServicos)
-                        .addComponent(btBaixa)))
-                .addContainerGap(21, Short.MAX_VALUE))
+        lb_operacao.setText("Operação");
+
+        lb_contaDO.setText("Conta Destino/Origem");
+
+        cb_contasDO.setEnabled(false);
+
+        lb_notificacao.setText("Notificação: ");
+
+        cb_jms.setText("JMS");
+
+        cb_sms.setText("SMS");
+
+        javax.swing.GroupLayout p_acompanhamentoLayout = new javax.swing.GroupLayout(p_acompanhamento);
+        p_acompanhamento.setLayout(p_acompanhamentoLayout);
+        p_acompanhamentoLayout.setHorizontalGroup(
+            p_acompanhamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(p_acompanhamentoLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(p_acompanhamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(p_acompanhamentoLayout.createSequentialGroup()
+                        .addComponent(lb_tipoServicos)
+                        .addGap(210, 210, 210))
+                    .addGroup(p_acompanhamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(lb_operacao)
+                        .addComponent(lb_valor)
+                        .addComponent(lb_ContaCorrente)
+                        .addComponent(cb_contas, 0, 313, Short.MAX_VALUE)
+                        .addComponent(cb_Baixa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cb_operacao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cb_contasDO, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ftt_valor)
+                        .addComponent(lb_contaDO, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(bt_CadastrarServicos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cb_Analise, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, p_acompanhamentoLayout.createSequentialGroup()
+                        .addComponent(lb_notificacao)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cb_whatsapp)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cb_sms)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cb_jms)))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(jLabel1)
+        p_acompanhamentoLayout.setVerticalGroup(
+            p_acompanhamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(p_acompanhamentoLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(lb_ContaCorrente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cb_contas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel4)
-                .addGap(18, 18, 18)
-                .addComponent(cbNotificacao)
-                .addGap(18, 18, 18)
-                .addComponent(btAnalise)
-                .addGap(18, 18, 18)
-                .addComponent(btBaixa)
-                .addGap(39, 39, 39)
-                .addComponent(btCadastrarServicos)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lb_operacao)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cb_operacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lb_valor)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ftt_valor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lb_contaDO)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cb_contasDO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lb_tipoServicos)
+                .addGap(12, 12, 12)
+                .addGroup(p_acompanhamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lb_notificacao)
+                    .addGroup(p_acompanhamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cb_whatsapp)
+                        .addComponent(cb_sms)
+                        .addComponent(cb_jms)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cb_Analise)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cb_Baixa)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(bt_CadastrarServicos)
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
-        cbNotificacao.getAccessibleContext().setAccessibleName("");
+        cb_whatsapp.getAccessibleContext().setAccessibleName("");
 
-        tp_fastBank.addTab("Acompanhamento", jPanel2);
+        tp_fastBank.addTab("Acompanhamento", p_acompanhamento);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -448,16 +509,9 @@ public class Principal extends javax.swing.JFrame {
         c.addConta(cc);
 
         cb_contas.addItem(cc);
+        cb_contasDO.addItem(cc);
         JOptionPane.showMessageDialog(this, "Conta corrente cadastrada com sucesso!");
     }//GEN-LAST:event_bt_cadastrarContaActionPerformed
-
-    private void cbNotificacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbNotificacaoActionPerformed
-        // TODO add your handling code here:
-        ContaCorrente cc = (ContaCorrente) cb_contas.getSelectedItem();
-        if (cbNotificacao.isSelected()) {
-            jdNotifica.setVisible(rootPaneCheckingEnabled);
-        }
-    }//GEN-LAST:event_cbNotificacaoActionPerformed
 
     private void jdNotificaWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_jdNotificaWindowOpened
         // TODO add your handling code here:
@@ -468,15 +522,79 @@ public class Principal extends javax.swing.JFrame {
     private void btEnviarNotificaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEnviarNotificaActionPerformed
         // TODO add your handling code here:
         if (!cbJMS.isSelected() && !cbSms.isSelected() && !cbWhats.isSelected()) {
-              JOptionPane.showMessageDialog(btEnviarNotifica, "Favor, informar ao menos uma notificação!");
+            JOptionPane.showMessageDialog(btEnviarNotifica, "Favor, informar ao menos uma notificação!");
         }else{
-        jdNotifica.dispose();
+            jdNotifica.dispose();
         }
     }//GEN-LAST:event_btEnviarNotificaActionPerformed
 
-    private void btCadastrarServicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarServicosActionPerformed
+    private void bt_CadastrarServicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_CadastrarServicosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btCadastrarServicosActionPerformed
+        
+        ContaCorrente c = (ContaCorrente) cb_contas.getSelectedItem();
+        ContaCorrente cdo = (ContaCorrente) cb_contasDO.getSelectedItem();
+        
+        //saque
+        if (cb_operacao.getSelectedIndex() == 0) {
+            c.sacar(Double.parseDouble(ftt_valor.getText()));
+        }
+        //deposito
+        else if (cb_operacao.getSelectedIndex() == 1) {
+            c.depositar(Double.parseDouble(ftt_valor.getText()));
+        }
+        //transferencia
+        else if (cb_operacao.getSelectedIndex() == 2) {
+            c.transferir(Double.parseDouble(ftt_valor.getText()), cdo);
+        }
+        //recebimento de transferencia
+        else if (cb_operacao.getSelectedIndex() == 3) {
+            //c.receberTransferencia(Double.parseDouble(ftt_valor.getText()), cdo);
+        }
+        
+        if (c.getCliente() instanceof ClientePessoaFisica) {
+            if (cb_whatsapp.isSelected()) {
+                Notificacao n  = new Notificacao(c, TipoNotificacao.WHATSAPP);
+                c.addServico(n);
+                System.out.println(n.toString());
+            }
+            if (cb_sms.isSelected()) {
+                Notificacao n  = new Notificacao(c, TipoNotificacao.SMS);
+                c.addServico(n);
+                System.out.println(n.toString());
+            }
+        }
+        if (c.getCliente() instanceof ClientePessoaJuridica) {
+            if (cb_jms.isSelected()) {
+                Notificacao n  = new Notificacao(c, TipoNotificacao.JMS);
+                c.addServico(n);
+                System.out.println(n.toString());
+            }
+        }
+    }//GEN-LAST:event_bt_CadastrarServicosActionPerformed
+
+    private void cb_operacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_operacaoActionPerformed
+        // TODO add your handling code here:
+        //saque
+        if (cb_operacao.getSelectedIndex() == 0) {
+            lb_contaDO.setText("Conta Destino/Origem");
+            cb_contasDO.setEnabled(false);
+        }
+        //deposito
+        else if (cb_operacao.getSelectedIndex() == 1) {
+            lb_contaDO.setText("Conta Destino/Origem");
+            cb_contasDO.setEnabled(false);
+        }
+        //transferencia
+        else if (cb_operacao.getSelectedIndex() == 2) {
+            lb_contaDO.setText("Conta Destino");
+            cb_contasDO.setEnabled(true);
+        }
+        //recebimento de transferencia
+        else if (cb_operacao.getSelectedIndex() == 3) {
+            lb_contaDO.setText("Conta Origem");
+            cb_contasDO.setEnabled(true);
+        }
+    }//GEN-LAST:event_cb_operacaoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -515,39 +633,48 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bg_tipoPessoa;
-    private javax.swing.JCheckBox btAnalise;
-    private javax.swing.JCheckBox btBaixa;
-    private javax.swing.JButton btCadastrarServicos;
     private javax.swing.JButton btEnviarNotifica;
+    private javax.swing.JButton bt_CadastrarServicos;
     private javax.swing.JButton bt_cadastrar;
     private javax.swing.JButton bt_cadastrarConta;
     private javax.swing.JCheckBox cbJMS;
-    private javax.swing.JCheckBox cbNotificacao;
     private javax.swing.JCheckBox cbSms;
     private javax.swing.JCheckBox cbWhats;
+    private javax.swing.JCheckBox cb_Analise;
+    private javax.swing.JCheckBox cb_Baixa;
     private javax.swing.JComboBox<Cliente> cb_clientes;
     private javax.swing.JComboBox<ContaCorrente> cb_contas;
+    private javax.swing.JComboBox<ContaCorrente> cb_contasDO;
+    private javax.swing.JCheckBox cb_jms;
+    private javax.swing.JComboBox<String> cb_operacao;
+    private javax.swing.JCheckBox cb_sms;
+    private javax.swing.JCheckBox cb_whatsapp;
     private javax.swing.JFormattedTextField fft_telCelular;
     private javax.swing.JFormattedTextField ftt_agencia;
     private javax.swing.JFormattedTextField ftt_cpf_cnpj;
     private javax.swing.JFormattedTextField ftt_numero;
     private javax.swing.JFormattedTextField ftt_servidor;
     private javax.swing.JFormattedTextField ftt_telFixo;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JFormattedTextField ftt_valor;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JDialog jdNotifica;
+    private javax.swing.JLabel lb_ContaCorrente;
     private javax.swing.JLabel lb_agencia;
     private javax.swing.JLabel lb_cliente;
+    private javax.swing.JLabel lb_contaDO;
     private javax.swing.JLabel lb_cpf_cnpj;
     private javax.swing.JLabel lb_nome;
+    private javax.swing.JLabel lb_notificacao;
     private javax.swing.JLabel lb_numero;
+    private javax.swing.JLabel lb_operacao;
     private javax.swing.JLabel lb_servidor;
+    private javax.swing.JLabel lb_tipoServicos;
+    private javax.swing.JLabel lb_valor;
+    private javax.swing.JPanel p_acompanhamento;
+    private javax.swing.JPanel p_cliente;
+    private javax.swing.JPanel p_contaCorrente;
     private javax.swing.JRadioButton rb_CNPJ;
     private javax.swing.JRadioButton rb_CPF;
     private javax.swing.JTextField tf_nome;
