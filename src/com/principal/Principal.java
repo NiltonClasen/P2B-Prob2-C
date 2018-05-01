@@ -10,6 +10,8 @@ import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import problema2.AnaliseFluxoCaixa;
+import problema2.BaixaAutomatica;
 import problema2.Cliente;
 import problema2.ClientePessoaFisica;
 import problema2.ClientePessoaJuridica;
@@ -569,6 +571,12 @@ public class Principal extends javax.swing.JFrame {
                 c.addServico(n);
                 System.out.println(n.toString());
             }
+        }
+        if (cb_Analise.isSelected()) {
+            c.addServico(new AnaliseFluxoCaixa(c));
+        }
+        if (cb_Baixa.isSelected()) {
+            c.addServico(new BaixaAutomatica(c));
         }
     }//GEN-LAST:event_bt_CadastrarServicosActionPerformed
 
