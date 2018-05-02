@@ -368,7 +368,7 @@ public class Principal extends javax.swing.JFrame {
 
         ftt_valor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
 
-        cb_operacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Saque", "Deposito", "Transferência", "Recebimento de transferência" }));
+        cb_operacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Saque", "Deposito", "Transferência" }));
         cb_operacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cb_operacaoActionPerformed(evt);
@@ -611,13 +611,6 @@ public class Principal extends javax.swing.JFrame {
         //transferencia
         else if (cb_operacao.getSelectedIndex() == 2) {
             lb_contaDO.setText("Conta Destino");
-            cb_contasDO.setEnabled(true);
-            //evita fazer transferencia pra si msm
-            cb_contasDO.removeItem(cb_contas.getSelectedItem());
-        }
-        //recebimento de transferencia
-        else if (cb_operacao.getSelectedIndex() == 3) {
-            lb_contaDO.setText("Conta Origem");
             cb_contasDO.setEnabled(true);
             //evita fazer transferencia pra si msm
             cb_contasDO.removeItem(cb_contas.getSelectedItem());
