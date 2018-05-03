@@ -73,23 +73,23 @@ public class Principal extends javax.swing.JFrame {
         bt_cadastrarConta = new javax.swing.JButton();
         ftt_numero = new javax.swing.JFormattedTextField();
         ftt_agencia = new javax.swing.JFormattedTextField();
+        lb_notificacao1 = new javax.swing.JLabel();
+        cb_whatsapp = new javax.swing.JCheckBox();
+        cb_sms = new javax.swing.JCheckBox();
+        cb_jms = new javax.swing.JCheckBox();
+        cb_Baixa = new javax.swing.JCheckBox();
+        cb_Analise = new javax.swing.JCheckBox();
+        lb_tipoServicos = new javax.swing.JLabel();
         p_acompanhamento = new javax.swing.JPanel();
         cb_contas = new javax.swing.JComboBox<>();
         lb_ContaCorrente = new javax.swing.JLabel();
-        lb_tipoServicos = new javax.swing.JLabel();
-        cb_whatsapp = new javax.swing.JCheckBox();
-        cb_Analise = new javax.swing.JCheckBox();
-        cb_Baixa = new javax.swing.JCheckBox();
-        bt_CadastrarServicos = new javax.swing.JButton();
         lb_valor = new javax.swing.JLabel();
         ftt_valor = new javax.swing.JFormattedTextField();
         cb_operacao = new javax.swing.JComboBox<>();
         lb_operacao = new javax.swing.JLabel();
         lb_contaDO = new javax.swing.JLabel();
         cb_contasDO = new javax.swing.JComboBox<>();
-        lb_notificacao = new javax.swing.JLabel();
-        cb_jms = new javax.swing.JCheckBox();
-        cb_sms = new javax.swing.JCheckBox();
+        bt_acompanhamento = new javax.swing.JButton();
 
         jdNotifica.setAlwaysOnTop(true);
         jdNotifica.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -273,12 +273,12 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(ftt_servidor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(bt_cadastrar)
-                .addContainerGap(126, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         tp_fastBank.addTab("Cliente", p_cliente);
 
-        lb_numero.setText("Numero");
+        lb_numero.setText("Conta Corrente");
 
         lb_cliente.setText("Cliente");
 
@@ -291,11 +291,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        try {
-            ftt_numero.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#########")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
+        ftt_numero.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#######"))));
 
         try {
             ftt_agencia.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###")));
@@ -303,20 +299,53 @@ public class Principal extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
+        lb_notificacao1.setText("Notificação: ");
+
+        cb_whatsapp.setText("WhatsApp");
+
+        cb_sms.setText("SMS");
+
+        cb_jms.setText("JMS");
+        cb_jms.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cb_jmsMouseClicked(evt);
+            }
+        });
+
+        cb_Baixa.setText("Baixa automática de investimento");
+
+        cb_Analise.setText("Análise do fluxo de caixa");
+
+        lb_tipoServicos.setText("Tipo de Serviços");
+
         javax.swing.GroupLayout p_contaCorrenteLayout = new javax.swing.GroupLayout(p_contaCorrente);
         p_contaCorrente.setLayout(p_contaCorrenteLayout);
         p_contaCorrenteLayout.setHorizontalGroup(
             p_contaCorrenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(p_contaCorrenteLayout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addGroup(p_contaCorrenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lb_agencia)
-                    .addComponent(lb_numero)
-                    .addComponent(lb_cliente)
-                    .addComponent(cb_clientes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ftt_numero)
-                    .addComponent(ftt_agencia)
-                    .addComponent(bt_cadastrarConta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(p_contaCorrenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cb_Baixa)
+                    .addComponent(cb_Analise)
+                    .addGroup(p_contaCorrenteLayout.createSequentialGroup()
+                        .addGroup(p_contaCorrenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lb_tipoServicos)
+                            .addGroup(p_contaCorrenteLayout.createSequentialGroup()
+                                .addComponent(lb_notificacao1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cb_whatsapp)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cb_sms)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cb_jms))
+                    .addGroup(p_contaCorrenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(lb_agencia)
+                        .addComponent(lb_numero)
+                        .addComponent(lb_cliente)
+                        .addComponent(cb_clientes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ftt_numero)
+                        .addComponent(ftt_agencia)
+                        .addComponent(bt_cadastrarConta, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(42, Short.MAX_VALUE))
         );
         p_contaCorrenteLayout.setVerticalGroup(
@@ -334,9 +363,21 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(lb_cliente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cb_clientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
+                .addComponent(lb_tipoServicos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(p_contaCorrenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(lb_notificacao1)
+                    .addComponent(cb_whatsapp)
+                    .addComponent(cb_sms)
+                    .addComponent(cb_jms))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cb_Analise)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cb_Baixa)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bt_cadastrarConta)
-                .addContainerGap(259, Short.MAX_VALUE))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
 
         tp_fastBank.addTab("Conta Corrente", p_contaCorrente);
@@ -349,24 +390,9 @@ public class Principal extends javax.swing.JFrame {
 
         lb_ContaCorrente.setText("Conta Corrente");
 
-        lb_tipoServicos.setText("Tipo de Serviços");
-
-        cb_whatsapp.setText("WhatsApp");
-
-        cb_Analise.setText("Análise do fluxo de caixa");
-
-        cb_Baixa.setText("Baixa automática de investimento");
-
-        bt_CadastrarServicos.setText("Confirmar");
-        bt_CadastrarServicos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_CadastrarServicosActionPerformed(evt);
-            }
-        });
-
         lb_valor.setText("Valor");
 
-        ftt_valor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
+        ftt_valor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###0.00"))));
 
         cb_operacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Saque", "Deposito", "Transferência" }));
         cb_operacao.addActionListener(new java.awt.event.ActionListener() {
@@ -381,11 +407,12 @@ public class Principal extends javax.swing.JFrame {
 
         cb_contasDO.setEnabled(false);
 
-        lb_notificacao.setText("Notificação: ");
-
-        cb_jms.setText("JMS");
-
-        cb_sms.setText("SMS");
+        bt_acompanhamento.setText("Operar");
+        bt_acompanhamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_acompanhamentoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout p_acompanhamentoLayout = new javax.swing.GroupLayout(p_acompanhamento);
         p_acompanhamento.setLayout(p_acompanhamentoLayout);
@@ -393,30 +420,16 @@ public class Principal extends javax.swing.JFrame {
             p_acompanhamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(p_acompanhamentoLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addGroup(p_acompanhamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(p_acompanhamentoLayout.createSequentialGroup()
-                        .addComponent(lb_tipoServicos)
-                        .addGap(210, 210, 210))
-                    .addGroup(p_acompanhamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(lb_operacao)
-                        .addComponent(lb_valor)
-                        .addComponent(lb_ContaCorrente)
-                        .addComponent(cb_contas, 0, 313, Short.MAX_VALUE)
-                        .addComponent(cb_Baixa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cb_operacao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cb_contasDO, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ftt_valor)
-                        .addComponent(lb_contaDO, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(bt_CadastrarServicos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cb_Analise, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, p_acompanhamentoLayout.createSequentialGroup()
-                        .addComponent(lb_notificacao)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cb_whatsapp)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cb_sms)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cb_jms)))
+                .addGroup(p_acompanhamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lb_operacao)
+                    .addComponent(lb_valor)
+                    .addComponent(lb_ContaCorrente)
+                    .addComponent(cb_contas, 0, 313, Short.MAX_VALUE)
+                    .addComponent(cb_operacao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cb_contasDO, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ftt_valor)
+                    .addComponent(lb_contaDO, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_acompanhamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(45, Short.MAX_VALUE))
         );
         p_acompanhamentoLayout.setVerticalGroup(
@@ -438,25 +451,10 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(lb_contaDO)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cb_contasDO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lb_tipoServicos)
-                .addGap(12, 12, 12)
-                .addGroup(p_acompanhamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lb_notificacao)
-                    .addGroup(p_acompanhamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cb_whatsapp)
-                        .addComponent(cb_sms)
-                        .addComponent(cb_jms)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cb_Analise)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cb_Baixa)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(bt_CadastrarServicos)
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(bt_acompanhamento)
+                .addContainerGap(124, Short.MAX_VALUE))
         );
-
-        cb_whatsapp.getAccessibleContext().setAccessibleName("");
 
         tp_fastBank.addTab("Acompanhamento", p_acompanhamento);
 
@@ -518,6 +516,28 @@ public class Principal extends javax.swing.JFrame {
 
         cb_contas.addItem(cc);
         cb_contasDO.addItem(cc);
+
+        Notificacao n;
+        if (cb_jms.isSelected()) {
+            n = new Notificacao(cc, TipoNotificacao.JMS);
+            cc.addServico(n);
+        }
+        if (cb_sms.isSelected()) {
+            n = new Notificacao(cc, TipoNotificacao.SMS);
+            cc.addServico(n);
+        }
+
+        if (cb_whatsapp.isSelected()) {
+            n = new Notificacao(cc, TipoNotificacao.WHATSAPP);
+            cc.addServico(n);
+        }
+        
+        if (cb_Analise.isSelected()) {
+            cc.addServico(new AnaliseFluxoCaixa(cc));
+        }
+        if (cb_Baixa.isSelected()) {
+            cc.addServico(new BaixaAutomatica(cc));
+        }
         JOptionPane.showMessageDialog(this, "Conta corrente cadastrada com sucesso!");
     }//GEN-LAST:event_bt_cadastrarContaActionPerformed
 
@@ -531,70 +551,10 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (!cbJMS.isSelected() && !cbSms.isSelected() && !cbWhats.isSelected()) {
             JOptionPane.showMessageDialog(btEnviarNotifica, "Favor, informar ao menos uma notificação!");
-        }else{
+        } else {
             jdNotifica.dispose();
         }
     }//GEN-LAST:event_btEnviarNotificaActionPerformed
-
-    private void bt_CadastrarServicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_CadastrarServicosActionPerformed
-        // TODO add your handling code here:
-        
-        ContaCorrente c = (ContaCorrente) cb_contas.getSelectedItem();
-        ContaCorrente cdo = (ContaCorrente) cb_contasDO.getSelectedItem();
-        
-        //saque
-        if (cb_operacao.getSelectedIndex() == 0) {
-            c.sacar(Double.parseDouble(ftt_valor.getText()));
-        }
-        //deposito
-        else if (cb_operacao.getSelectedIndex() == 1) {
-            c.depositar(Double.parseDouble(ftt_valor.getText()));
-        }
-        //transferencia
-        else if (cb_operacao.getSelectedIndex() == 2) {
-            c.transferir(Double.parseDouble(ftt_valor.getText()), cdo);
-        }
-        //recebimento de transferencia
-        else if (cb_operacao.getSelectedIndex() == 3) {
-            //c.receberTransferencia(Double.parseDouble(ftt_valor.getText()), cdo);
-        }
-        
-        if (c.getCliente() instanceof ClientePessoaFisica) {
-            if (cb_whatsapp.isSelected()) {
-                Notificacao n  = new Notificacao(c, TipoNotificacao.WHATSAPP);
-                c.addServico(n);
-                System.out.println(n.toString());
-            }
-            if (cb_sms.isSelected()) {
-                Notificacao n  = new Notificacao(c, TipoNotificacao.SMS);
-                c.addServico(n);
-                System.out.println(n.toString());
-            }
-        }
-        if (c.getCliente() instanceof ClientePessoaJuridica) {
-            if (cb_whatsapp.isSelected()) {
-                Notificacao n  = new Notificacao(c, TipoNotificacao.WHATSAPP);
-                c.addServico(n);
-                System.out.println(n.toString());
-            }
-            if (cb_sms.isSelected()) {
-                Notificacao n  = new Notificacao(c, TipoNotificacao.SMS);
-                c.addServico(n);
-                System.out.println(n.toString());
-            }
-            if (cb_jms.isSelected()) {
-                Notificacao n  = new Notificacao(c, TipoNotificacao.JMS);
-                c.addServico(n);
-                System.out.println(n.toString());
-            }
-        }
-        if (cb_Analise.isSelected()) {
-            c.addServico(new AnaliseFluxoCaixa(c));
-        }
-        if (cb_Baixa.isSelected()) {
-            c.addServico(new BaixaAutomatica(c));
-        }
-    }//GEN-LAST:event_bt_CadastrarServicosActionPerformed
 
     private void cb_operacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_operacaoActionPerformed
         // TODO add your handling code here:
@@ -602,13 +562,11 @@ public class Principal extends javax.swing.JFrame {
         if (cb_operacao.getSelectedIndex() == 0) {
             lb_contaDO.setText("Conta Destino/Origem");
             cb_contasDO.setEnabled(false);
-        }
-        //deposito
+        } //deposito
         else if (cb_operacao.getSelectedIndex() == 1) {
             lb_contaDO.setText("Conta Destino/Origem");
             cb_contasDO.setEnabled(false);
-        }
-        //transferencia
+        } //transferencia
         else if (cb_operacao.getSelectedIndex() == 2) {
             lb_contaDO.setText("Conta Destino");
             cb_contasDO.setEnabled(true);
@@ -619,23 +577,50 @@ public class Principal extends javax.swing.JFrame {
 
     private void cb_contasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_contasActionPerformed
         // TODO add your handling code here:
-        
+
         //evita fazer transferencia pra si msm
         cb_contasDO.removeAllItems();
         for (int i = 0; i < cb_contas.getItemCount(); i++) {
-           cb_contasDO.addItem(cb_contas.getItemAt(i));
+            cb_contasDO.addItem(cb_contas.getItemAt(i));
         }
         cb_contasDO.removeItem(cb_contas.getSelectedItem());
-        
-        //nao mostrar jms pra pessoa fisica
-        ContaCorrente c = (ContaCorrente) cb_contas.getSelectedItem();
-        if (c.getCliente() instanceof ClientePessoaFisica) {
-            cb_jms.setVisible(false);
-        }
-        if (c.getCliente() instanceof ClientePessoaJuridica) {
-            cb_jms.setVisible(true);
-        }
+
     }//GEN-LAST:event_cb_contasActionPerformed
+
+    private void cb_jmsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cb_jmsMouseClicked
+        // TODO add your handling code here:
+        try {
+            Cliente c = (ClientePessoaFisica) cb_clientes.getSelectedItem();
+            cb_jms.setSelected(false);
+        } catch (ClassCastException e) {
+        }
+    }//GEN-LAST:event_cb_jmsMouseClicked
+
+    private void bt_acompanhamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_acompanhamentoActionPerformed
+        // TODO add your handling code here:
+        ContaCorrente c = (ContaCorrente) cb_contas.getSelectedItem();
+        ContaCorrente cdo = (ContaCorrente) cb_contasDO.getSelectedItem();
+        Double valor = Double.parseDouble(ftt_valor.getText().replaceAll(",", "."));
+        
+        //saque
+        if (cb_operacao.getSelectedIndex() == 0) {
+            c.sacar(valor);
+        } //deposito
+        else if (cb_operacao.getSelectedIndex() == 1) {
+            c.depositar(valor);
+        } //transferencia
+        else if (cb_operacao.getSelectedIndex() == 2) {
+            c.transferir(valor, cdo);
+        } //recebimento de transferencia
+        else if (cb_operacao.getSelectedIndex() == 3) {
+            //c.receberTransferencia(valor, cdo);
+        }
+        
+        c.executarServicos();
+        
+        
+
+    }//GEN-LAST:event_bt_acompanhamentoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -675,7 +660,7 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bg_tipoPessoa;
     private javax.swing.JButton btEnviarNotifica;
-    private javax.swing.JButton bt_CadastrarServicos;
+    private javax.swing.JButton bt_acompanhamento;
     private javax.swing.JButton bt_cadastrar;
     private javax.swing.JButton bt_cadastrarConta;
     private javax.swing.JCheckBox cbJMS;
@@ -707,7 +692,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel lb_contaDO;
     private javax.swing.JLabel lb_cpf_cnpj;
     private javax.swing.JLabel lb_nome;
-    private javax.swing.JLabel lb_notificacao;
+    private javax.swing.JLabel lb_notificacao1;
     private javax.swing.JLabel lb_numero;
     private javax.swing.JLabel lb_operacao;
     private javax.swing.JLabel lb_servidor;

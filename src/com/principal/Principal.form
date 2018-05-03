@@ -8,7 +8,7 @@
       <Properties>
         <Property name="alwaysOnTop" type="boolean" value="true"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-          <Color id="Default Cursor"/>
+          <Color id="Cursor Padr&#xe3;o"/>
         </Property>
         <Property name="location" type="java.awt.Point" editor="org.netbeans.beaninfo.editors.PointEditor">
           <Point value="[5, 5]"/>
@@ -212,7 +212,7 @@
                       <Component id="ftt_servidor" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="bt_cadastrar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="126" max="32767" attributes="0"/>
+                      <EmptySpace pref="67" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -322,14 +322,32 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="lb_agencia" min="-2" max="-2" attributes="0"/>
-                          <Component id="lb_numero" min="-2" max="-2" attributes="0"/>
-                          <Component id="lb_cliente" min="-2" max="-2" attributes="0"/>
-                          <Component id="cb_clientes" max="32767" attributes="0"/>
-                          <Component id="ftt_numero" alignment="0" max="32767" attributes="0"/>
-                          <Component id="ftt_agencia" alignment="0" max="32767" attributes="0"/>
-                          <Component id="bt_cadastrarConta" alignment="1" min="-2" pref="313" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="cb_Baixa" min="-2" max="-2" attributes="0"/>
+                          <Component id="cb_Analise" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lb_tipoServicos" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="lb_notificacao1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="cb_whatsapp" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="cb_sms" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="cb_jms" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="lb_agencia" min="-2" max="-2" attributes="0"/>
+                              <Component id="lb_numero" min="-2" max="-2" attributes="0"/>
+                              <Component id="lb_cliente" min="-2" max="-2" attributes="0"/>
+                              <Component id="cb_clientes" max="32767" attributes="0"/>
+                              <Component id="ftt_numero" alignment="0" max="32767" attributes="0"/>
+                              <Component id="ftt_agencia" alignment="0" max="32767" attributes="0"/>
+                              <Component id="bt_cadastrarConta" alignment="0" min="-2" pref="313" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace pref="42" max="32767" attributes="0"/>
                   </Group>
@@ -350,9 +368,22 @@
                       <Component id="lb_cliente" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="cb_clientes" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="lb_tipoServicos" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="2" attributes="0">
+                          <Component id="lb_notificacao1" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="cb_whatsapp" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="cb_sms" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="cb_jms" alignment="2" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="cb_Analise" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="cb_Baixa" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="bt_cadastrarConta" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="259" max="32767" attributes="0"/>
+                      <EmptySpace pref="92" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -365,7 +396,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="lb_numero">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Numero"/>
+                <Property name="text" type="java.lang.String" value="Conta Corrente"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lb_cliente">
@@ -388,8 +419,8 @@
             </Component>
             <Component class="javax.swing.JFormattedTextField" name="ftt_numero">
               <Properties>
-                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-                  <Format format="#########" subtype="-1" type="5"/>
+                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
+                  <Format format="#######" subtype="-1" type="0"/>
                 </Property>
               </Properties>
             </Component>
@@ -398,6 +429,44 @@
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
                   <Format format="###" subtype="-1" type="5"/>
                 </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lb_notificacao1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Notifica&#xe7;&#xe3;o: "/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cb_whatsapp">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="WhatsApp"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cb_sms">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="SMS"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cb_jms">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="JMS"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cb_jmsMouseClicked"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cb_Baixa">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Baixa autom&#xe1;tica de investimento"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cb_Analise">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="An&#xe1;lise do fluxo de caixa"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lb_tipoServicos">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Tipo de Servi&#xe7;os"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -416,33 +485,16 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="lb_tipoServicos" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="210" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="lb_operacao" min="-2" max="-2" attributes="0"/>
-                              <Component id="lb_valor" min="-2" max="-2" attributes="0"/>
-                              <Component id="lb_ContaCorrente" min="-2" max="-2" attributes="0"/>
-                              <Component id="cb_contas" pref="313" max="32767" attributes="0"/>
-                              <Component id="cb_Baixa" alignment="1" max="32767" attributes="0"/>
-                              <Component id="cb_operacao" max="32767" attributes="0"/>
-                              <Component id="cb_contasDO" alignment="0" max="32767" attributes="0"/>
-                              <Component id="ftt_valor" alignment="0" max="32767" attributes="0"/>
-                              <Component id="lb_contaDO" alignment="0" min="-2" pref="151" max="-2" attributes="0"/>
-                              <Component id="bt_CadastrarServicos" alignment="1" max="32767" attributes="0"/>
-                              <Component id="cb_Analise" alignment="0" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="lb_notificacao" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="cb_whatsapp" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="cb_sms" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="cb_jms" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="lb_operacao" min="-2" max="-2" attributes="0"/>
+                          <Component id="lb_valor" min="-2" max="-2" attributes="0"/>
+                          <Component id="lb_ContaCorrente" min="-2" max="-2" attributes="0"/>
+                          <Component id="cb_contas" pref="313" max="32767" attributes="0"/>
+                          <Component id="cb_operacao" max="32767" attributes="0"/>
+                          <Component id="cb_contasDO" alignment="0" max="32767" attributes="0"/>
+                          <Component id="ftt_valor" alignment="0" max="32767" attributes="0"/>
+                          <Component id="lb_contaDO" alignment="0" min="-2" pref="151" max="-2" attributes="0"/>
+                          <Component id="bt_acompanhamento" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="45" max="32767" attributes="0"/>
                   </Group>
@@ -467,24 +519,9 @@
                       <Component id="lb_contaDO" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="cb_contasDO" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="lb_tipoServicos" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lb_notificacao" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                              <Component id="cb_whatsapp" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cb_sms" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cb_jms" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="cb_Analise" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="cb_Baixa" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="bt_CadastrarServicos" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="70" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="bt_acompanhamento" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="124" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -503,37 +540,6 @@
                 <Property name="text" type="java.lang.String" value="Conta Corrente"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lb_tipoServicos">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Tipo de Servi&#xe7;os"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="cb_whatsapp">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="WhatsApp"/>
-              </Properties>
-              <AccessibilityProperties>
-                <Property name="AccessibleContext.accessibleName" type="java.lang.String" value=""/>
-              </AccessibilityProperties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="cb_Analise">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="An&#xe1;lise do fluxo de caixa"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="cb_Baixa">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Baixa autom&#xe1;tica de investimento"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="bt_CadastrarServicos">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Confirmar"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_CadastrarServicosActionPerformed"/>
-              </Events>
-            </Component>
             <Component class="javax.swing.JLabel" name="lb_valor">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Valor"/>
@@ -542,7 +548,7 @@
             <Component class="javax.swing.JFormattedTextField" name="ftt_valor">
               <Properties>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-                  <Format format="#0.00" subtype="-1" type="0"/>
+                  <Format format="###0.00" subtype="-1" type="4"/>
                 </Property>
               </Properties>
             </Component>
@@ -581,20 +587,13 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;ContaCorrente&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JLabel" name="lb_notificacao">
+            <Component class="javax.swing.JButton" name="bt_acompanhamento">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Notifica&#xe7;&#xe3;o: "/>
+                <Property name="text" type="java.lang.String" value="Operar"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="cb_jms">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="JMS"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="cb_sms">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="SMS"/>
-              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_acompanhamentoActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
