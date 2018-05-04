@@ -278,6 +278,12 @@ public class Principal extends javax.swing.JFrame {
 
         tp_fastBank.addTab("Cliente", p_cliente);
 
+        cb_clientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_clientesActionPerformed(evt);
+            }
+        });
+
         lb_numero.setText("Conta Corrente");
 
         lb_cliente.setText("Cliente");
@@ -475,17 +481,20 @@ public class Principal extends javax.swing.JFrame {
     private void rb_CPFMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rb_CPFMouseClicked
         // TODO add your handling code here:
         try {
+            ftt_cpf_cnpj.setText("");
             ftt_cpf_cnpj.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
         lb_cpf_cnpj.setText("CPF");
         ftt_servidor.setEditable(false);
+        ftt_servidor.setText("");
     }//GEN-LAST:event_rb_CPFMouseClicked
 
     private void rb_CNPJMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rb_CNPJMouseClicked
         // TODO add your handling code here:
         try {
+            ftt_cpf_cnpj.setText("");
             ftt_cpf_cnpj.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###/####-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
@@ -553,6 +562,7 @@ public class Principal extends javax.swing.JFrame {
             }
 
             JOptionPane.showMessageDialog(this, "Conta corrente cadastrada com sucesso!");
+            cb_jms.setSelected(false);
 
         } catch (NumberFormatException e) {
 
@@ -624,15 +634,15 @@ public class Principal extends javax.swing.JFrame {
     private void bt_acompanhamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_acompanhamentoActionPerformed
         // TODO add your handling code here:
         try {
-            
+
             if (ftt_valor.getText().isEmpty()) {
                 throw new IllegalArgumentException("Digite um valor!");
             }
-            
+
             ContaCorrente c = (ContaCorrente) cb_contas.getSelectedItem();
             ContaCorrente cdo = (ContaCorrente) cb_contasDO.getSelectedItem();
             Double valor = Double.parseDouble(ftt_valor.getText().replaceAll(",", "."));
-            
+
             if (c == null) {
                 throw new IllegalArgumentException("Nenhuma conta de origem selecionada!");
             }
@@ -657,6 +667,16 @@ public class Principal extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_bt_acompanhamentoActionPerformed
+
+    private void cb_clientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_clientesActionPerformed
+        // TODO add your handling code here:
+        Cliente c = (Cliente) cb_clientes.getSelectedItem();
+        if (c instanceof ClientePessoaFisica) {
+            cb_jms.setVisible(false);
+        } else {
+            cb_jms.setVisible(true);
+        }
+    }//GEN-LAST:event_cb_clientesActionPerformed
 
     /**
      * @param args the command line arguments
