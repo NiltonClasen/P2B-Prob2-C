@@ -507,7 +507,8 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_cadastrarActionPerformed
 
     private void bt_cadastrarContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cadastrarContaActionPerformed
-        // TODO add your handling code here:
+       // TODO add your handling code here:
+       try{
         ContaCorrente cc;
         cc = new ContaCorrente(Integer.parseInt(ftt_numero.getText()), Integer.parseInt(ftt_agencia.getText()));
 
@@ -538,7 +539,19 @@ public class Principal extends javax.swing.JFrame {
         if (cb_Baixa.isSelected()) {
             cc.addServico(new BaixaAutomatica(cc));
         }
+        
         JOptionPane.showMessageDialog(this, "Conta corrente cadastrada com sucesso!");
+
+       }catch(NumberFormatException e){
+       
+        JOptionPane.showMessageDialog(this,"Formato inválido"); 
+        
+       }catch(java.lang.IllegalArgumentException ex){
+       
+        JOptionPane.showMessageDialog(this,ex.toString()); 
+        
+       }
+        
     }//GEN-LAST:event_bt_cadastrarContaActionPerformed
 
     private void jdNotificaWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_jdNotificaWindowOpened
@@ -601,25 +614,29 @@ public class Principal extends javax.swing.JFrame {
         ContaCorrente c = (ContaCorrente) cb_contas.getSelectedItem();
         ContaCorrente cdo = (ContaCorrente) cb_contasDO.getSelectedItem();
         Double valor = Double.parseDouble(ftt_valor.getText().replaceAll(",", "."));
+        try{
+            //saque
+            if (cb_operacao.getSelectedIndex() == 0) {
+                c.sacar(valor);
+            } //deposito
+            else if (cb_operacao.getSelectedIndex() == 1) {
+                c.depositar(valor);
+            } //transferencia
+            else if (cb_operacao.getSelectedIndex() == 2) {
+                if(cdo != null)
+                    c.transferir(valor, cdo);
+                else
+                    throw new IllegalArgumentException("Conta de destino/origem não selecionada"); 
+            } //recebimento de transferencia
+            else if (cb_operacao.getSelectedIndex() == 3) {
+                //c.receberTransferencia(valor, cdo);
+            }
+            c.executarServicos();
         
-        //saque
-        if (cb_operacao.getSelectedIndex() == 0) {
-            c.sacar(valor);
-        } //deposito
-        else if (cb_operacao.getSelectedIndex() == 1) {
-            c.depositar(valor);
-        } //transferencia
-        else if (cb_operacao.getSelectedIndex() == 2) {
-            c.transferir(valor, cdo);
-        } //recebimento de transferencia
-        else if (cb_operacao.getSelectedIndex() == 3) {
-            //c.receberTransferencia(valor, cdo);
+        }catch(IllegalArgumentException e){
+            JOptionPane.showMessageDialog(this,e.toString());
         }
-        
-        c.executarServicos();
-        
-        
-
+       
     }//GEN-LAST:event_bt_acompanhamentoActionPerformed
 
     /**

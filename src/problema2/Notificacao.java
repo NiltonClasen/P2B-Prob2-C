@@ -1,27 +1,27 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package problema2;
 
-/**
- *
- * @author bruno
- */
-public class Notificacao extends Servico{
+
+public class Notificacao extends Servico {
+
     TipoNotificacao tipo;
-    
+
     public Notificacao(ContaCorrente conta, TipoNotificacao tipo) {
         super(conta);
         this.tipo = tipo;
     }
-    
+
     @Override
-    public String toString(){
+    public String toString() {
         //pega a ultima operacao da conta
-        return "Notificação " + tipo + ": Conta Corrente " + this.getConta() + " Operação: " + this.getConta().getOperacoes().get(this.getConta().getOperacoes().size()-1);
-    
+        String str = "-Notificação " + tipo + ": \n" + this.getConta().getOperacoes().get(this.getConta().getOperacoes().size() - 1) + "\n";
+        if (tipo == TipoNotificacao.JMS) {
+            ClientePessoaJuridica c = (ClientePessoaJuridica)this.getConta().getCliente();
+            return str + "Servidor JMS: " + c.getServidorJMS();
+
+        } else {
+            return str;
+        }
+
     }
-    
+
 }
