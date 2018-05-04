@@ -113,7 +113,7 @@ public class ContaCorrente {
                 str += servico.toString() + "\n";
             }
         } else {
-            str += "Nenhum serviço para esta conta.";
+            str += "\n Nenhum serviço para esta conta.";
         }
         System.out.println(str);
     }

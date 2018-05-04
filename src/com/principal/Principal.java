@@ -497,61 +497,73 @@ public class Principal extends javax.swing.JFrame {
     private void bt_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cadastrarActionPerformed
         // TODO add your handling code here:
         Cliente c;
-        if (rb_CPF.isSelected()) {
-            c = new ClientePessoaFisica(tf_nome.getText(), fft_telCelular.getText(), ftt_telFixo.getText(), ftt_cpf_cnpj.getText());
-        } else {
-            c = new ClientePessoaJuridica(tf_nome.getText(), fft_telCelular.getText(), ftt_telFixo.getText(), ftt_cpf_cnpj.getText(), ftt_servidor.getText());
+        try {
+            if (rb_CPF.isSelected()) {
+                if (tf_nome.getText().isEmpty() || fft_telCelular.getText().isEmpty() || ftt_telFixo.getText().isEmpty() || ftt_cpf_cnpj.getText().isEmpty()) {
+                    throw new IllegalArgumentException("Cliente não cadastrado, preencha todos os campos e tente novamente!");
+                }
+                c = new ClientePessoaFisica(tf_nome.getText(), fft_telCelular.getText(), ftt_telFixo.getText(), ftt_cpf_cnpj.getText());
+            } else {
+                if (tf_nome.getText().isEmpty() || fft_telCelular.getText().isEmpty() || ftt_telFixo.getText().isEmpty() || ftt_cpf_cnpj.getText().isEmpty() || ftt_servidor.getText().isEmpty()) {
+                    throw new IllegalArgumentException("Cliente não cadastrado, preencha todos os campos e tente novamente!");
+                }
+                c = new ClientePessoaJuridica(tf_nome.getText(), fft_telCelular.getText(), ftt_telFixo.getText(), ftt_cpf_cnpj.getText(), ftt_servidor.getText());
+            }
+            cb_clientes.addItem(c);
+            JOptionPane.showMessageDialog(this, "Cliente cadastrado com sucesso!");
+
+        } catch (IllegalArgumentException e) {
+
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
-        cb_clientes.addItem(c);
-        JOptionPane.showMessageDialog(this, "Cliente cadastrado com sucesso!");
     }//GEN-LAST:event_bt_cadastrarActionPerformed
 
     private void bt_cadastrarContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cadastrarContaActionPerformed
-       // TODO add your handling code here:
-       try{
-        ContaCorrente cc;
-        cc = new ContaCorrente(Integer.parseInt(ftt_numero.getText()), Integer.parseInt(ftt_agencia.getText()));
+        // TODO add your handling code here:
+        try {
+            ContaCorrente cc;
+            cc = new ContaCorrente(Integer.parseInt(ftt_numero.getText()), Integer.parseInt(ftt_agencia.getText()));
 
-        Cliente c = (Cliente) cb_clientes.getSelectedItem();
-        c.addConta(cc);
+            Cliente c = (Cliente) cb_clientes.getSelectedItem();
+            c.addConta(cc);
 
-        cb_contas.addItem(cc);
-        cb_contasDO.addItem(cc);
+            cb_contas.addItem(cc);
+            cb_contasDO.addItem(cc);
 
-        Notificacao n;
-        if (cb_jms.isSelected()) {
-            n = new Notificacao(cc, TipoNotificacao.JMS);
-            cc.addServico(n);
-        }
-        if (cb_sms.isSelected()) {
-            n = new Notificacao(cc, TipoNotificacao.SMS);
-            cc.addServico(n);
+            Notificacao n;
+            if (cb_jms.isSelected()) {
+                n = new Notificacao(cc, TipoNotificacao.JMS);
+                cc.addServico(n);
+            }
+            if (cb_sms.isSelected()) {
+                n = new Notificacao(cc, TipoNotificacao.SMS);
+                cc.addServico(n);
+            }
+
+            if (cb_whatsapp.isSelected()) {
+                n = new Notificacao(cc, TipoNotificacao.WHATSAPP);
+                cc.addServico(n);
+            }
+
+            if (cb_Analise.isSelected()) {
+                cc.addServico(new AnaliseFluxoCaixa(cc));
+            }
+            if (cb_Baixa.isSelected()) {
+                cc.addServico(new BaixaAutomatica(cc));
+            }
+
+            JOptionPane.showMessageDialog(this, "Conta corrente cadastrada com sucesso!");
+
+        } catch (NumberFormatException e) {
+
+            JOptionPane.showMessageDialog(this, "Campos com formato inválido");
+
+        } catch (IllegalArgumentException ex) {
+
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+
         }
 
-        if (cb_whatsapp.isSelected()) {
-            n = new Notificacao(cc, TipoNotificacao.WHATSAPP);
-            cc.addServico(n);
-        }
-        
-        if (cb_Analise.isSelected()) {
-            cc.addServico(new AnaliseFluxoCaixa(cc));
-        }
-        if (cb_Baixa.isSelected()) {
-            cc.addServico(new BaixaAutomatica(cc));
-        }
-        
-        JOptionPane.showMessageDialog(this, "Conta corrente cadastrada com sucesso!");
-
-       }catch(NumberFormatException e){
-       
-        JOptionPane.showMessageDialog(this,"Formato inválido"); 
-        
-       }catch(java.lang.IllegalArgumentException ex){
-       
-        JOptionPane.showMessageDialog(this,ex.toString()); 
-        
-       }
-        
     }//GEN-LAST:event_bt_cadastrarContaActionPerformed
 
     private void jdNotificaWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_jdNotificaWindowOpened
@@ -611,10 +623,22 @@ public class Principal extends javax.swing.JFrame {
 
     private void bt_acompanhamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_acompanhamentoActionPerformed
         // TODO add your handling code here:
-        ContaCorrente c = (ContaCorrente) cb_contas.getSelectedItem();
-        ContaCorrente cdo = (ContaCorrente) cb_contasDO.getSelectedItem();
-        Double valor = Double.parseDouble(ftt_valor.getText().replaceAll(",", "."));
-        try{
+        try {
+            
+            if (ftt_valor.getText().isEmpty()) {
+                throw new IllegalArgumentException("Digite um valor!");
+            }
+            
+            ContaCorrente c = (ContaCorrente) cb_contas.getSelectedItem();
+            ContaCorrente cdo = (ContaCorrente) cb_contasDO.getSelectedItem();
+            Double valor = Double.parseDouble(ftt_valor.getText().replaceAll(",", "."));
+            
+            if (c == null) {
+                throw new IllegalArgumentException("Nenhuma conta de origem selecionada!");
+            }
+            if (cdo == null) {
+                throw new IllegalArgumentException("Nenhuma conta de destino selecionada!");
+            }
             //saque
             if (cb_operacao.getSelectedIndex() == 0) {
                 c.sacar(valor);
@@ -623,20 +647,15 @@ public class Principal extends javax.swing.JFrame {
                 c.depositar(valor);
             } //transferencia
             else if (cb_operacao.getSelectedIndex() == 2) {
-                if(cdo != null)
-                    c.transferir(valor, cdo);
-                else
-                    throw new IllegalArgumentException("Conta de destino/origem não selecionada"); 
+                c.transferir(valor, cdo);
             } //recebimento de transferencia
-            else if (cb_operacao.getSelectedIndex() == 3) {
-                //c.receberTransferencia(valor, cdo);
-            }
+
             c.executarServicos();
-        
-        }catch(IllegalArgumentException e){
-            JOptionPane.showMessageDialog(this,e.toString());
+
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
-       
+
     }//GEN-LAST:event_bt_acompanhamentoActionPerformed
 
     /**

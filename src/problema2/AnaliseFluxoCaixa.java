@@ -13,7 +13,7 @@ public class AnaliseFluxoCaixa extends Servico {
         String str = "-Análise fluxo de caixa: \n";
         if(!this.getConta().getOperacoes().isEmpty())
             for (Operacao o : this.getConta().getOperacoes()) {
-                str += "-" + o.toString() + "\n";
+                str +=  o.toString() + "\n";
             }
         return str;
     }
