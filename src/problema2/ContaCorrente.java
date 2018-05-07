@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author marcel
  */
-public class ContaCorrente {
+public class ContaCorrente implements Observer {
 
     private int numero;
     private int agencia;
@@ -101,10 +101,12 @@ public class ContaCorrente {
         this.operacoes = operacoes;
     }
 
+    @Override
     public void addServico(Servico servico) {
         servicos.add(servico);
     }
 
+    @Override
     public void executarServicos() {
         String str = "Cliente " + cliente + ", Conta " + getChave();
         if (!servicos.isEmpty()) {
