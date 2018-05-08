@@ -11,12 +11,14 @@ import java.util.ArrayList;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import problema2.AnaliseFluxoCaixa;
+import problema2.AnaliseInvestimento;
 import problema2.BaixaAutomatica;
 import problema2.Cliente;
 import problema2.ClientePessoaFisica;
 import problema2.ClientePessoaJuridica;
 import problema2.ContaCorrente;
 import problema2.Notificacao;
+import problema2.OfertaFinanciamento;
 import problema2.TipoNotificacao;
 
 /**
@@ -80,6 +82,8 @@ public class Principal extends javax.swing.JFrame {
         cb_Baixa = new javax.swing.JCheckBox();
         cb_Analise = new javax.swing.JCheckBox();
         lb_tipoServicos = new javax.swing.JLabel();
+        cb_analiseinvestimento = new javax.swing.JCheckBox();
+        cb_ofertafinanciamento = new javax.swing.JCheckBox();
         p_acompanhamento = new javax.swing.JPanel();
         cb_contas = new javax.swing.JComboBox<>();
         lb_ContaCorrente = new javax.swing.JLabel();
@@ -220,7 +224,7 @@ public class Principal extends javax.swing.JFrame {
         p_clienteLayout.setHorizontalGroup(
             p_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, p_clienteLayout.createSequentialGroup()
-                .addContainerGap(31, Short.MAX_VALUE)
+                .addContainerGap(37, Short.MAX_VALUE)
                 .addGroup(p_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lb_servidor)
                     .addGroup(p_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -324,13 +328,31 @@ public class Principal extends javax.swing.JFrame {
 
         lb_tipoServicos.setText("Tipo de Serviços");
 
+        cb_analiseinvestimento.setText("Análise de investimento");
+        cb_analiseinvestimento.setName("analiseinvestimento"); // NOI18N
+        cb_analiseinvestimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_analiseinvestimentoActionPerformed(evt);
+            }
+        });
+
+        cb_ofertafinanciamento.setLabel("Oferta de financiamento ");
+        cb_ofertafinanciamento.setName("ofertafinanciamento"); // NOI18N
+        cb_ofertafinanciamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_ofertafinanciamentoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout p_contaCorrenteLayout = new javax.swing.GroupLayout(p_contaCorrente);
         p_contaCorrente.setLayout(p_contaCorrenteLayout);
         p_contaCorrenteLayout.setHorizontalGroup(
             p_contaCorrenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(p_contaCorrenteLayout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addGroup(p_contaCorrenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(p_contaCorrenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(cb_clientes, 0, 349, Short.MAX_VALUE)
+                    .addComponent(bt_cadastrarConta, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cb_Baixa)
                     .addComponent(cb_Analise)
                     .addGroup(p_contaCorrenteLayout.createSequentialGroup()
@@ -344,15 +366,15 @@ public class Principal extends javax.swing.JFrame {
                                 .addComponent(cb_sms)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cb_jms))
-                    .addGroup(p_contaCorrenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(lb_agencia)
-                        .addComponent(lb_numero)
-                        .addComponent(lb_cliente)
-                        .addComponent(cb_clientes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ftt_numero)
-                        .addComponent(ftt_agencia)
-                        .addComponent(bt_cadastrarConta, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(42, Short.MAX_VALUE))
+                    .addComponent(lb_agencia)
+                    .addComponent(lb_numero)
+                    .addComponent(lb_cliente)
+                    .addComponent(cb_analiseinvestimento)
+                    .addComponent(cb_ofertafinanciamento)
+                    .addGroup(p_contaCorrenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(ftt_agencia, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
+                        .addComponent(ftt_numero, javax.swing.GroupLayout.Alignment.LEADING)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         p_contaCorrenteLayout.setVerticalGroup(
             p_contaCorrenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -368,7 +390,7 @@ public class Principal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lb_cliente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cb_clientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cb_clientes, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lb_tipoServicos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -382,8 +404,12 @@ public class Principal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cb_Baixa)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cb_ofertafinanciamento)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cb_analiseinvestimento)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(bt_cadastrarConta)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         tp_fastBank.addTab("Conta Corrente", p_contaCorrente);
@@ -436,7 +462,7 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(ftt_valor)
                     .addComponent(lb_contaDO, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bt_acompanhamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         p_acompanhamentoLayout.setVerticalGroup(
             p_acompanhamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -560,6 +586,12 @@ public class Principal extends javax.swing.JFrame {
             if (cb_Baixa.isSelected()) {
                 cc.addServico(new BaixaAutomatica(cc));
             }
+            if (cb_analiseinvestimento.isSelected()) {
+                cc.addServico(new AnaliseInvestimento(cc));
+            }
+            if (cb_ofertafinanciamento.isSelected()) {
+                cc.addServico(new OfertaFinanciamento(cc));
+            }
 
             JOptionPane.showMessageDialog(this, "Conta corrente cadastrada com sucesso!");
             cb_jms.setSelected(false);
@@ -678,6 +710,14 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cb_clientesActionPerformed
 
+    private void cb_ofertafinanciamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_ofertafinanciamentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_ofertafinanciamentoActionPerformed
+
+    private void cb_analiseinvestimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_analiseinvestimentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_analiseinvestimentoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -724,10 +764,12 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JCheckBox cbWhats;
     private javax.swing.JCheckBox cb_Analise;
     private javax.swing.JCheckBox cb_Baixa;
+    private javax.swing.JCheckBox cb_analiseinvestimento;
     private javax.swing.JComboBox<Cliente> cb_clientes;
     private javax.swing.JComboBox<ContaCorrente> cb_contas;
     private javax.swing.JComboBox<ContaCorrente> cb_contasDO;
     private javax.swing.JCheckBox cb_jms;
+    private javax.swing.JCheckBox cb_ofertafinanciamento;
     private javax.swing.JComboBox<String> cb_operacao;
     private javax.swing.JCheckBox cb_sms;
     private javax.swing.JCheckBox cb_whatsapp;

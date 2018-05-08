@@ -149,7 +149,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="31" max="32767" attributes="0"/>
+                      <EmptySpace pref="37" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lb_servidor" min="-2" max="-2" attributes="0"/>
                           <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
@@ -322,7 +322,9 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="cb_clientes" pref="349" max="32767" attributes="0"/>
+                          <Component id="bt_cadastrarConta" min="-2" pref="313" max="-2" attributes="0"/>
                           <Component id="cb_Baixa" min="-2" max="-2" attributes="0"/>
                           <Component id="cb_Analise" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
@@ -339,17 +341,17 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="cb_jms" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="lb_agencia" min="-2" max="-2" attributes="0"/>
-                              <Component id="lb_numero" min="-2" max="-2" attributes="0"/>
-                              <Component id="lb_cliente" min="-2" max="-2" attributes="0"/>
-                              <Component id="cb_clientes" max="32767" attributes="0"/>
+                          <Component id="lb_agencia" min="-2" max="-2" attributes="0"/>
+                          <Component id="lb_numero" min="-2" max="-2" attributes="0"/>
+                          <Component id="lb_cliente" min="-2" max="-2" attributes="0"/>
+                          <Component id="cb_analiseinvestimento" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="cb_ofertafinanciamento" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="ftt_agencia" alignment="0" pref="349" max="32767" attributes="0"/>
                               <Component id="ftt_numero" alignment="0" max="32767" attributes="0"/>
-                              <Component id="ftt_agencia" alignment="0" max="32767" attributes="0"/>
-                              <Component id="bt_cadastrarConta" alignment="0" min="-2" pref="313" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="42" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -367,7 +369,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lb_cliente" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="cb_clientes" min="-2" max="-2" attributes="0"/>
+                      <Component id="cb_clientes" min="-2" pref="20" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="lb_tipoServicos" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -382,8 +384,12 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="cb_Baixa" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Component id="cb_ofertafinanciamento" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="cb_analiseinvestimento" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="bt_cadastrarConta" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="92" max="32767" attributes="0"/>
+                      <EmptySpace pref="41" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -472,6 +478,24 @@
                 <Property name="text" type="java.lang.String" value="Tipo de Servi&#xe7;os"/>
               </Properties>
             </Component>
+            <Component class="javax.swing.JCheckBox" name="cb_analiseinvestimento">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="An&#xe1;lise de investimento"/>
+                <Property name="name" type="java.lang.String" value="analiseinvestimento" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cb_analiseinvestimentoActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cb_ofertafinanciamento">
+              <Properties>
+                <Property name="label" type="java.lang.String" value="Oferta de financiamento "/>
+                <Property name="name" type="java.lang.String" value="ofertafinanciamento" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cb_ofertafinanciamentoActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="p_acompanhamento">
@@ -499,7 +523,7 @@
                           <Component id="lb_contaDO" alignment="0" min="-2" pref="151" max="-2" attributes="0"/>
                           <Component id="bt_acompanhamento" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="45" max="32767" attributes="0"/>
+                      <EmptySpace pref="49" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
