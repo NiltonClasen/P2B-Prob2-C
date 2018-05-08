@@ -33,6 +33,7 @@ public class Principal extends javax.swing.JFrame {
     public Principal() {
         initComponents();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        ftt_cnpj.setVisible(false);
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
     }
 
@@ -63,10 +64,11 @@ public class Principal extends javax.swing.JFrame {
         rb_CPF = new javax.swing.JRadioButton();
         rb_CNPJ = new javax.swing.JRadioButton();
         lb_cpf_cnpj = new javax.swing.JLabel();
-        ftt_cpf_cnpj = new javax.swing.JFormattedTextField();
+        ftt_cpf = new javax.swing.JFormattedTextField();
         bt_cadastrar = new javax.swing.JButton();
         ftt_servidor = new javax.swing.JFormattedTextField();
         lb_servidor = new javax.swing.JLabel();
+        ftt_cnpj = new javax.swing.JFormattedTextField();
         p_contaCorrente = new javax.swing.JPanel();
         cb_clientes = new javax.swing.JComboBox<>();
         lb_numero = new javax.swing.JLabel();
@@ -197,7 +199,7 @@ public class Principal extends javax.swing.JFrame {
         lb_cpf_cnpj.setText("CPF");
 
         try {
-            ftt_cpf_cnpj.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+            ftt_cpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -218,6 +220,12 @@ public class Principal extends javax.swing.JFrame {
         ftt_servidor.setToolTipText("");
 
         lb_servidor.setText("Servidor JMS");
+
+        try {
+            ftt_cnpj.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###/####-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         javax.swing.GroupLayout p_clienteLayout = new javax.swing.GroupLayout(p_cliente);
         p_cliente.setLayout(p_clienteLayout);
@@ -240,12 +248,13 @@ public class Principal extends javax.swing.JFrame {
                             .addComponent(fft_telCelular, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE))
                         .addGroup(p_clienteLayout.createSequentialGroup()
                             .addComponent(rb_CPF)
-                            .addGap(81, 81, 81)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(rb_CNPJ))
                         .addComponent(ftt_servidor)
                         .addComponent(tf_nome)
-                        .addComponent(ftt_cpf_cnpj)
-                        .addComponent(bt_cadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(ftt_cpf)
+                        .addComponent(bt_cadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ftt_cnpj, javax.swing.GroupLayout.Alignment.TRAILING)))
                 .addGap(25, 25, 25))
         );
         p_clienteLayout.setVerticalGroup(
@@ -262,7 +271,9 @@ public class Principal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lb_cpf_cnpj)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ftt_cpf_cnpj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ftt_cpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ftt_cnpj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(p_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -277,7 +288,7 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(ftt_servidor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(bt_cadastrar)
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         tp_fastBank.addTab("Cliente", p_cliente);
@@ -371,9 +382,8 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(lb_cliente)
                     .addComponent(cb_analiseinvestimento)
                     .addComponent(cb_ofertafinanciamento)
-                    .addGroup(p_contaCorrenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(ftt_agencia, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
-                        .addComponent(ftt_numero, javax.swing.GroupLayout.Alignment.LEADING)))
+                    .addComponent(ftt_agencia, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
+                    .addComponent(ftt_numero))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         p_contaCorrenteLayout.setVerticalGroup(
@@ -409,7 +419,7 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(cb_analiseinvestimento)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(bt_cadastrarConta)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         tp_fastBank.addTab("Conta Corrente", p_contaCorrente);
@@ -485,7 +495,7 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(cb_contasDO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(bt_acompanhamento)
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addContainerGap(122, Short.MAX_VALUE))
         );
 
         tp_fastBank.addTab("Acompanhamento", p_acompanhamento);
@@ -506,25 +516,19 @@ public class Principal extends javax.swing.JFrame {
 
     private void rb_CPFMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rb_CPFMouseClicked
         // TODO add your handling code here:
-        try {
-            ftt_cpf_cnpj.setText("");
-            ftt_cpf_cnpj.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
+        ftt_cpf.setText("");
         lb_cpf_cnpj.setText("CPF");
+        ftt_cnpj.setVisible(false);
+        ftt_cpf.setVisible(true);
         ftt_servidor.setEditable(false);
         ftt_servidor.setText("");
     }//GEN-LAST:event_rb_CPFMouseClicked
 
     private void rb_CNPJMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rb_CNPJMouseClicked
         // TODO add your handling code here:
-        try {
-            ftt_cpf_cnpj.setText("");
-            ftt_cpf_cnpj.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###/####-##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
+        ftt_cnpj.setText("");
+        ftt_cpf.setVisible(false);
+        ftt_cnpj.setVisible(true);
         lb_cpf_cnpj.setText("CNPJ");
         ftt_servidor.setEditable(true);
     }//GEN-LAST:event_rb_CNPJMouseClicked
@@ -534,15 +538,15 @@ public class Principal extends javax.swing.JFrame {
         Cliente c;
         try {
             if (rb_CPF.isSelected()) {
-                if (tf_nome.getText().isEmpty() || fft_telCelular.getText().isEmpty() || ftt_telFixo.getText().isEmpty() || ftt_cpf_cnpj.getText().isEmpty()) {
+                if (tf_nome.getText().isEmpty() || fft_telCelular.getText().isEmpty() || ftt_telFixo.getText().isEmpty() || ftt_cpf.getText().isEmpty()) {
                     throw new IllegalArgumentException("Cliente não cadastrado, preencha todos os campos e tente novamente!");
                 }
-                c = new ClientePessoaFisica(tf_nome.getText(), fft_telCelular.getText(), ftt_telFixo.getText(), ftt_cpf_cnpj.getText());
+                c = new ClientePessoaFisica(tf_nome.getText(), fft_telCelular.getText(), ftt_telFixo.getText(), ftt_cpf.getText());
             } else {
-                if (tf_nome.getText().isEmpty() || fft_telCelular.getText().isEmpty() || ftt_telFixo.getText().isEmpty() || ftt_cpf_cnpj.getText().isEmpty() || ftt_servidor.getText().isEmpty()) {
+                if (tf_nome.getText().isEmpty() || fft_telCelular.getText().isEmpty() || ftt_telFixo.getText().isEmpty() || ftt_cpf.getText().isEmpty() || ftt_servidor.getText().isEmpty()) {
                     throw new IllegalArgumentException("Cliente não cadastrado, preencha todos os campos e tente novamente!");
                 }
-                c = new ClientePessoaJuridica(tf_nome.getText(), fft_telCelular.getText(), ftt_telFixo.getText(), ftt_cpf_cnpj.getText(), ftt_servidor.getText());
+                c = new ClientePessoaJuridica(tf_nome.getText(), fft_telCelular.getText(), ftt_telFixo.getText(), ftt_cpf.getText(), ftt_servidor.getText());
             }
             cb_clientes.addItem(c);
             JOptionPane.showMessageDialog(this, "Cliente cadastrado com sucesso!");
@@ -775,7 +779,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JCheckBox cb_whatsapp;
     private javax.swing.JFormattedTextField fft_telCelular;
     private javax.swing.JFormattedTextField ftt_agencia;
-    private javax.swing.JFormattedTextField ftt_cpf_cnpj;
+    private javax.swing.JFormattedTextField ftt_cnpj;
+    private javax.swing.JFormattedTextField ftt_cpf;
     private javax.swing.JFormattedTextField ftt_numero;
     private javax.swing.JFormattedTextField ftt_servidor;
     private javax.swing.JFormattedTextField ftt_telFixo;

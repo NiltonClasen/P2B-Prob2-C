@@ -167,13 +167,14 @@
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="rb_CPF" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                                   <Component id="rb_CNPJ" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="ftt_servidor" alignment="0" max="32767" attributes="0"/>
                               <Component id="tf_nome" alignment="0" max="32767" attributes="0"/>
-                              <Component id="ftt_cpf_cnpj" alignment="0" max="32767" attributes="0"/>
+                              <Component id="ftt_cpf" alignment="0" max="32767" attributes="0"/>
                               <Component id="bt_cadastrar" alignment="0" max="32767" attributes="0"/>
+                              <Component id="ftt_cnpj" alignment="1" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
@@ -195,7 +196,9 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="lb_cpf_cnpj" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="ftt_cpf_cnpj" min="-2" max="-2" attributes="0"/>
+                      <Component id="ftt_cpf" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="ftt_cnpj" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -212,7 +215,7 @@
                       <Component id="ftt_servidor" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="bt_cadastrar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="67" max="32767" attributes="0"/>
+                      <EmptySpace pref="39" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -277,7 +280,7 @@
                 <Property name="text" type="java.lang.String" value="CPF"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JFormattedTextField" name="ftt_cpf_cnpj">
+            <Component class="javax.swing.JFormattedTextField" name="ftt_cpf">
               <Properties>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
                   <Format format="###.###.###-##" subtype="-1" type="5"/>
@@ -304,6 +307,13 @@
             <Component class="javax.swing.JLabel" name="lb_servidor">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Servidor JMS"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JFormattedTextField" name="ftt_cnpj">
+              <Properties>
+                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+                  <Format format="##.###.###/####-##" subtype="-1" type="5"/>
+                </Property>
               </Properties>
             </Component>
           </SubComponents>
@@ -346,10 +356,8 @@
                           <Component id="lb_cliente" min="-2" max="-2" attributes="0"/>
                           <Component id="cb_analiseinvestimento" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="cb_ofertafinanciamento" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="ftt_agencia" alignment="0" pref="349" max="32767" attributes="0"/>
-                              <Component id="ftt_numero" alignment="0" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="ftt_agencia" alignment="0" pref="349" max="32767" attributes="0"/>
+                          <Component id="ftt_numero" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -389,7 +397,7 @@
                       <Component id="cb_analiseinvestimento" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="bt_cadastrarConta" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="41" max="32767" attributes="0"/>
+                      <EmptySpace pref="39" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -548,7 +556,7 @@
                       <Component id="cb_contasDO" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="bt_acompanhamento" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="124" max="32767" attributes="0"/>
+                      <EmptySpace pref="122" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
