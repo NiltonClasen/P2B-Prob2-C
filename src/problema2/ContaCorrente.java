@@ -120,4 +120,9 @@ public class ContaCorrente implements Observer {
         System.out.println(str);
     }
 
+    @Override
+    public void removeServico(Servico servico) {
+        servicos.remove(servico);
+    }
+
 }

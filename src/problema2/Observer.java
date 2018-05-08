@@ -11,6 +11,6 @@ package problema2;
  */
 public interface Observer {
     public void addServico(Servico servico);
-//    public void removeServico();
+    public void removeServico(Servico servico);
     public void executarServicos();
 }

@@ -1,0 +1,11 @@
+Subject é a classe ContaCorrente, que contém uma lista de Servico e permite adicionar/remover e executar os serviços.
+Observer é a classe Servico.
+As classes clientes que herdam do observer são:
+-AnaliseFluxoDeCaixa
+-AnaliseInvestimento 
+-BaixaAutomatica 
+-Notificacao
+-OfertaFinanciamento
+
+
+
