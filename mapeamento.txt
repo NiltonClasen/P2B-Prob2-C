@@ -1,11 +1,25 @@
-Subject � a classe ContaCorrente, que cont�m uma lista de Servico e permite adicionar/remover e executar os servi�os.
-Observer � a classe Servico.
-As classes clientes que herdam do observer s�o:
+Subject é a classe ContaCorrente, que contém uma lista de Servico e permite adicionar/remover e executar os serviços.
+--> Prof. Marcel: porém ContaCorrente foi desenvolvida como implementação de Observer. Ela é subject ou observer?
+--> Prof. Marcel: a interface Observer (abaixo) está definindo parte de comportamento de Subject (addServico e removeServico) e parte de comportamento de Observer (executarServicos). 
+public interface Observer {
+    public void addServico(Servico servico);
+    public void removeServico(Servico servico);
+    public void executarServicos();
+}
+
+Observer é a classe Servico.
+--> Prof. Marcel: a classe Servico está apenas encapsulando uma ContaCorrente, sem realizar mais nada.
+
+
+As classes clientes que herdam do observer são:
 -AnaliseFluxoDeCaixa
 -AnaliseInvestimento 
 -BaixaAutomatica 
 -Notificacao
 -OfertaFinanciamento
+--> Prof. Marcel: sim, elas devem ser Observer. Porém foram implementadas como subclasses de Servico, que não faz nada.
 
+--> Prof. Marcel: Na classe ContaCorrente, os serviços não são iniciados quando ocorre alguma movimentação na conta. E o método executarServicos() apenas imprime os serviços, mas não os chama. 
+--> Prof. Marcel: o método executarServicos() não deveria ser chamado pelo cliente (Principal.java) e sim pela própria conta corrente ao ser executada alguma operação (sacar, edpositar, transferir). O cliente deveria se preocupar em realizar a operação e não em notificar os observadores.
 
-
+--> Prof. Marcel: O padrão não foi corretamente compreendido e implementado.
