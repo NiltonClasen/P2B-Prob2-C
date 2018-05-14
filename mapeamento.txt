@@ -23,3 +23,9 @@ As classes clientes que herdam do observer são:
 --> Prof. Marcel: o método executarServicos() não deveria ser chamado pelo cliente (Principal.java) e sim pela própria conta corrente ao ser executada alguma operação (sacar, edpositar, transferir). O cliente deveria se preocupar em realizar a operação e não em notificar os observadores.
 
 --> Prof. Marcel: O padrão não foi corretamente compreendido e implementado.
+
+--> Prof. Marcel: Cada problema recebe uma nota de 0,0 a 3,0.
+A soma dos 3 problemas mais a avaliação sobre a colaboração no trabalho em equipe define a nota de cada aluno.
+Problema - Notas Equipe B
+1	        2,5
+2	        1,7
